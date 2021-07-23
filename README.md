@@ -1,1 +1,1 @@
-# Bachelor_Project
+# BachelorProject
