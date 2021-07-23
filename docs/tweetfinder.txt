@@ -1,0 +1,6 @@
+Link to find the status: https://twitter.com/anyuser/status/{status_id}
+Checker: https://mediabiasfactcheck.com/msn-com/
+
+non superare core logici
+massimo di utenti leggermente superiore al limite giornalieri (in modo da testare lo switch di credenziali)
+credential.json
