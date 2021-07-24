@@ -66,8 +66,11 @@ def found(name, list_name):
             return True
     return False
 
-def process_data_disinformation(df: pd.DataFrame):
-    return {'user': df["user_screen_name"], 'content': df["text"]}
+def process_data_disinformation(df: pd.DataFrame, lista):
+    return {
+        'user': df["user_screen_name"], 
+        'content': df["text"]
+    }
 
 def process_all_data(filename, cols, flag, list_name, chunksize=chunksize, workers=workers):
     c = 1
@@ -89,7 +92,7 @@ def process_all_data(filename, cols, flag, list_name, chunksize=chunksize, worke
             try:
                 if (flag == True):
 #                     futures.append(executor.submit(process_data_tweets, sc))
-                    futures.append(executor.submit(process_data_disinformation, sc))
+                    futures.append(executor.submit(process_data_disinformation, sc, list_name))
                 else:
                     futures.append(executor.submit(process_data_users, sc))
 
