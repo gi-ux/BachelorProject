@@ -10,7 +10,6 @@ logger = logging.getLogger("main")
 workers = 7
 chunksize = int(1e6)
 
-
 def process_datetime(data):
     if ((data == "nan") or (data == "False") or (data == "None")):
         month = "01"
@@ -22,7 +21,21 @@ def process_datetime(data):
         day = str(x[2])
         year = str(x[5])
     formatted_data = day + "-" + month + "-" + year
-    return formatted_data
+    data = str(datetime.datetime.strptime(formatted_data, '%d-%m-%Y')).split()[0]
+    return data
+
+def found(name, list_name):
+    for i in list_name:
+        if(name == i):
+            return True
+    return False
+
+def url_decompress(url):
+        x = url.split()
+        url = x[3].translate({ord("'"): None})
+        url = url.split("//")
+        url = url[1].split("/")
+        return url[0]
 
 def process_data_tweets(df: pd.DataFrame):
     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
@@ -60,16 +73,12 @@ def process_data_users(df: pd.DataFrame):
             'verified': df["verified"]
             }
 
-def found(name, list_name):
-    for i in list_name:
-        if(name == i):
-            return True
-    return False
-
 def process_data_disinformation(df: pd.DataFrame, lista):
     return {
-        'user': df["user_screen_name"], 
-        'content': df["text"]
+        'users': df["user_screen_name"], 
+        'ids': df["id"],
+        'data': df["created_at"],
+        'link': df["urls"]
     }
 
 def process_all_data(filename, cols, flag, list_name, chunksize=chunksize, workers=workers):
