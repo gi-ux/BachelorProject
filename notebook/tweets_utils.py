@@ -74,11 +74,18 @@ def process_data_users(df: pd.DataFrame):
             }
 
 def process_data_disinformation(df: pd.DataFrame, lista):
+    retweet = df[df['rt_created_at'].notna()]
     return {
         'users': df["user_screen_name"], 
-        'ids': df["id"],
+        'ids': df["user_id"],
         'data': df["created_at"],
-        'link': df["urls"]
+        'link': df["urls"],        
+        "retweet_ids": retweet["user_id"], 
+        "retweet_users": retweet["user_screen_name"],
+        "retweeted_ids": retweet['rt_user_id'], 
+        "retweeted_users": retweet['rt_user_screen_name'],
+        "rt_link" : retweet['urls']
+
     }
 
 def process_all_data(filename, cols, flag, list_name, chunksize=chunksize, workers=workers):
