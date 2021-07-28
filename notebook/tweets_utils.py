@@ -74,17 +74,31 @@ def process_data_users(df: pd.DataFrame):
             }
 
 def process_data_disinformation(df: pd.DataFrame, lista):
+    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
+    reply = df[df['in_reply_to_status_id'].notna()]
     return {
+        #original
         'users': df["user_screen_name"], 
         'ids': df["user_id"],
-        'data': df["created_at"],
+#         'data': df["created_at"],
         'link': df["urls"],        
+        #retweet
         "retweet_ids": retweet["user_id"], 
         "retweet_users": retweet["user_screen_name"],
         "retweeted_ids": retweet['rt_user_id'], 
         "retweeted_users": retweet['rt_user_screen_name'],
-        "rt_link" : retweet['urls']
+        "rt_link" : retweet['urls'],
+        #reply
+        "reply_ids": reply['user_id'], 
+        "reply_users": reply['user_screen_name'],
+        "replied_ids": reply['in_reply_to_user_id'], 
+        "replied_users": reply['in_reply_to_screen_name'],
+        "retweet_ids": retweet["user_id"],
+        "total_len" :len(df), 
+        "original_len": len(original), 
+        "retweet_len": len(retweet), 
+        "reply_len": len(reply)
 
     }
 
