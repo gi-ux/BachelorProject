@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 to_be_scored/*.csv
-config.json
+notebook/config.json
