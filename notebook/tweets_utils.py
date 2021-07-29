@@ -117,8 +117,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             val = list(retweet["rt_user_screen_name"]).index(i,res)
             disinform_rt_name.append(i)
             disinform_rt_id.append(retweet["rt_user_id"][val])
-            rt_name.append(retweet["user_id"][val])
-            rt_id.append(retweet["user_screen_name"][val])
+            rt_id.append(retweet["user_id"][val])
+            rt_name.append(retweet["user_screen_name"][val])
             link_tweet.append(retweet['urls'][val])
             res = val + 1
     res = 0
