@@ -1,0 +1,807 @@
+Sub_ID,Domain,Class,Source,Orientation,Infos,Dataset
+0,100percentfedup.com,low,,,Low with media bias,US
+0,100percentfedup.com,high,,,High with media bias,US
+0,10news.one,low,,,Low with media bias,US
+0,12minutos.com,low,,,Low with media bias,US
+0,12news.com,high,,,High,US
+0,21stcenturywire.com,low,,,Low with media bias,US
+0,369news.net,low,,,Low with media bias,US
+0,38north.org,high,,,High,US
+0,3ccorp.net,low,,,Low with media bias,US
+14,5stellenews.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,680news.com,high,,,High,US
+0,70news.wordpress.com,low,,,Low with media bias,US
+0,79days.news,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,911Truth.org,low,,,Low with media bias,US
+0,9news.com,high,,,High,US
+0,a.msn.com,high,https://mediabiasfactcheck.com/msn-com/,,High,US
+0,aaas.org,high,,Pro Science,High with media bias,US
+0,aap.org,high,,Pro Science,High with media bias,US
+0,aapsonline.org,low,,,Questionable,US
+0,abc.net.au,high,,,High,US
+0,abc7ny.com,high,,,High,US
+0,abcbusinessnews.com,low,,,Questionable,US
+0,abcnews.com.co,low,,,Low with media bias,US
+0,abcnews.go.com,high,,,High with media bias,US
+0,abovetopsecret.com,low,,,Low with media bias,US
+-1,abruzzoweb.it,low,,,"quotidiano digitale locale, pagina fb chiusa",VaccinItaly
+0,abs-cbn.com,high,,,High,US
+34,accademiadellaliberta.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,acpeds.org,low,,,Low with media bias,US
+0,acting-man.com,low,,,Low with media bias,US
+0,actionnews3.com,low,,,Low with media bias,US
+0,activistmommy.com,low,,,Low with media bias,US
+0,activistpost.com,low,,,Low with media bias,US
+0,adaa.org,high,,Pro Science,High with media bias,US
+0,adamscountytimes.com,low,,,Low with media bias,US
+0,addictinginfo.org,low,,,Low with media bias,US
+0,additudemag.com,high,,Pro Science,High with media bias,US
+9,adessobasta.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,adflegal.org,low,,,Low with media bias,US
+22,adnkronos.com,high,VaccinItaly,,High with media bias,VaccinItaly
+0,adweek.com,high,,,High,US
+0,ae911truth.org,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,afa.net,low,,,Low with media bias,US
+-1,affaritaliani.it,high,,,simile ad altri categorizzati come high (secondo Pierri),VaccinItaly
+0,afp.com,high,,,High,US
+0,ageofautism.com,low,,,Low with media bias,US
+0,agerpres.ro,high,,,High,US
+20,agi.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,ahtribune.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+-1,aifa.gov.it,high,,,Istituzionale,VaccinItaly
+0,aim4truth.org,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,aip.org,high,,Pro Science,,US
+0,airforcetimes.com,high,,,High,US
+0,airspacemag.com,high,,,High with media bias,US
+0,ajaonline.org,high,,Pro Science,High with media bias,US
+0,ajph.aphapublications.org,high,,Pro Science,High with media bias,US
+0,ajuanews.com,low,,,Low with media bias,US
+0,albawaba.com,low,,,Low with media bias,US
+0,allenbwest.com,low,,,Low with media bias,US
+0,allenbwest.com,high,,,High with media bias,US
+0,allenwestrepublic.com,low,,,Low with media bias,US
+0,allianceforadvancedhealth.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,allianceforscience.cornell.edu,high,,Pro Science,High with media bias,US
+0,allnewspipeline.com,low,,,Low with media bias,US
+0,almasdarnews.com,low,,,Low with media bias,US
+0,alphanewsmn.com,low,,,Low with media bias,US
+0,alternativenews.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,althealthworks.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,alt-market.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+35,altrarealta.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,altright.com,low,,,Low with media bias,US
+0,ama-assn.org,high,,Pro Science,High with media bias,US
+0,america.cgtn.com,low,,,Questionable,US
+0,americadaily.com,low,,,Low with media bias,US
+0,americamaxnews.com,low,,,Low with media bias,US
+0,americanactionnews.com,low,,,Low with media bias,US
+0,americanconservativemedia.com,low,,,Low with media bias,US
+0,americandigitalnews.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,americanfreepress.net,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,americanjournalreview.com,low,,,Low with media bias,US
+0,americanlookout.com,low,,,Low with media bias,US
+0,americanmilitarynews.com,high,,,High,US
+0,americannews.com,low,,,Low with media bias,US
+0,americannewsx.com,low,,,Low with media bias,US
+0,americanpatriotdaily.com,low,,,Low with media bias,US
+0,americanpeopledaily.com,low,,,Low with media bias,US
+0,americanprinciplesproject.org,low,,,Low with media bias,US
+0,americansarepissed.com,low,,,Low with media bias,US
+0,americanscientist.org,high,,Pro Science,High with media bias,US
+0,americansfortruth.com,low,,,Low with media bias,US
+0,americanthinker.com,low,,,Low with media bias,US
+0,americanthinker.com,high,,,High with media bias,US
+0,americantoday.news,low,,,Low with media bias,US
+0,americantruthtoday.com,low,,,Low with media bias,US
+0,americasfreedomfighters.com,low,,,Low with media bias,US
+0,americasfrontlinedoctors.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,americasnewssource.com,low,,,Questionable,US
+0,americatalks.com,low,,,Low with media bias,US
+0,amityunderground.com,low,,,Questionable,US
+0,amplifyingglass.com,low,,,Low with media bias,US
+0,amren.com,low,,,Low with media bias,US
+0,amtvmedia.com,low,,,Low with media bias,US
+0,analyzingamerica.org,low,,,Questionable,US
+0,ancient-code.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,ancient-origins.net,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,anh-usa.org,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,anonews.co,low,,,Low with media bias,US
+0,anonhq.com,low,,,Low with media bias,US
+7,ansa.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,answersingenesis.org,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,antelopevalleytoday.com,low,,,Questionable,US
+0,apa.org,high,,Pro Science,High with media bias,US
+0,apnews.com,high,,,High with media bias,US
+0,apost.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,aps.org,high,,Pro Science,High with media bias,US
+0,apsa.org,high,,Pro Science,High with media bias,US
+0,arabnews.com,low,,,Questionable,US
+0,archaeology.org,high,,Pro Science,High with media bias,US
+0,archaeology-world.com,low,,,Questionable,US
+0,asia-pacificresearch.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,assassinationscience.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,astronomy.com,high,,Pro Science,High with media bias,US
+0,auburntimes.com,low,,,Low,US
+36,aurorasito.wordpress.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,australiannationalreview.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,autisminvestigated.com,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,autismspeaks.org,low,,Conspirancy Pseudoscience,Low with media bias,US
+0,autisticadvocacy.org,high,,,High with media bias,US
+0,avoiceformen.com,low,,,Low with media bias,US
+25,avvenire.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,awm.com,low,,,Low with media bias,US
+0,backroombuzz.com,low,,,Questionable,US
+0,baldwintimes.com,low,,,Questionable,US
+0,ballotpedia.org,high,,,High,US
+0,bannedinformation.com,low,,,Questionable,US
+0,barenakedislam.com,low,,,Low with media bias,US
+0,basnews.com,low,,,Questionable,US
+0,bb4sp.com,low,,,Questionable,US
+0,bbc.co.uk,high,,,High with media bias,US
+0,bbc.com,high,,,High with media bias,US
+0,bbc.in,high,,,High with media bias,US
+0,bdnews24.com,low,,,Questionable,US
+0,beforeitsnews.com,low,,,Low with media bias,US
+0,bentontimes.com,low,,,Questionable,US
+0,bestdailynews.info,low,,,Questionable,US
+0,bigamericannews.com,low,,,Low with media bias,US
+0,bigleaguepolitics.com,low,,,Questionable,US
+0,billionbibles.org,low,,,Questionable,US
+0,bio.org,high,,Pro Science,High with media bias,US
+0,biomedcentral.com,high,,Pro Science,High with media bias,US
+0,bipartisanreport.com,low,,,Low with media bias,US
+0,bipartisanreport.com,high,,,High with media bias,US
+0,bitchute.com,low,,,Questionable,US
+0,bizpacreview.com,high,,,High with media bias,US
+0,bjreview.com,low,,,Questionable,US
+0,blackeyepolitics.com,low,,,Questionable,US
+0,blackgenocide.org,low,,,Questionable,US
+0,blacknews.com,low,,,Questionable,US
+0,blackpigeonspeaks.com,low,,,Questionable,US
+0,blingnews.com,low,,,Questionable,US
+0,bloomberg.com,high,,,High with media bias,US
+0,bluedotdaily.com,low,,,Questionable,US
+0,bluenationreview.com,low,,,Low with media bias,US
+0,bluenationreview.com,high,,,High with media bias,US
+0,bluntforcetruth.com,low,,,Questionable,US
+0,bmj.com,high,,Pro Science,,US
+0,bnonews.com,high,,,High with media bias,US
+0,bongino.com,low,,,Low,US
+0,bossip.com,low,,,Questionable,US
+0,breaking911.com,low,,,Low,US
+0,breakingchristiannews.com,low,,,Questionable,US
+0,breakingfirst.com,low,,,Questionable,US
+0,breakingnews247.net,low,,,Questionable,US
+0,breakingnewshouse.com,low,,,Questionable,US
+0,breakingwide.com,low,,,Questionable,US
+15,breaknotizie.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,breitbart.com,low,,,Low with media bias,US
+0,breitbart.com,high,,,High with media bias,US
+0,bridgemi.com,high,,,High,US
+0,bridgeporttimes.com,low,,,Questionable,US
+0,britainfirst.org,low,,,Questionable,US
+0,britannica.com,high,,Pro Science,,US
+0,burrardstreetjournal.com,low,,,Low with media bias,US
+0,businessinsider.com,high,,,High with media bias,US
+0,buzzfeed.com,high,,,High with media bias,US
+16,byoblu.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,cair.com,low,,,Questionable,US
+0,caixinglobal.com,low,,,Questionable,US
+0,caldronpool.com,low,,,Questionable,US
+0,callthecops.net,low,,,Low with media bias,US
+0,canadafreepress.com,low,,,Questionable,US
+0,cap-news.com,low,,,Questionable,US
+10,catenaumana.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,cbc.ca,high,,,High,US
+0,cbsnews.com,high,,,High with media bias,US
+0,cdc.gov,high,,Pro Science,High with media bias,US
+-1,cdt.ch,high,,,"correiere del ticino, giornale locale",VaccinItaly
+0,cei.org,low,,,Questionable,US
+0,centennialstatenews.com,low,,,Questionable,US
+0,centerforsecuritypolicy.org,low,,,Questionable,US
+0,centralcoloradonews.com,low,,,Questionable,US
+0,centraloctimes.com,low,,,Questionable,US
+0,cernovich.com,low,,,Questionable,US
+0,channel-7-news.com,low,,,Low with media bias,US
+0,checkpointasia.net,low,,,Questionable,US
+0,chicotimes.com,low,,,Questionable,US
+0,chinadaily.com.cn,low,,,Questionable,US
+0,christianaction.org,low,,,Questionable,US
+0,christiantimes.com,low,,,Low with media bias,US
+0,christwire.org,low,,,Low with media bias,US
+0,chronicle.su,low,,,Low with media bias,US
+0,churchmilitant.com,low,,,Questionable,US
+2,cicap.org,high,Science vs Conspiracy,,,NA
+0,civictribune.com,low,,,Low with media bias,US
+0,clarionproject.org,low,,,Questionable,US
+0,clashdaily.com,low,,,Low with media bias,US
+0,clickhole.com,low,,,Low with media bias,US
+0,climateactiontracker.org,high,,Pro Science,High with media bias,US
+0,climatecentral.org,high,,,High with media bias,US
+0,climatefeedback.org,high,,Pro Science,High with media bias,US
+0,climatesciencewatch.org,high,,Pro Science,High with media bias,US
+0,cloverchronicle.com,low,,,Questionable,US
+0,cnb.cx,high,,,High with media bias,US
+0,cnet.com,high,,,High,US
+0,cnn.com,high,,,High with media bias,US
+0,coachellatoday.com,low,,,Questionable,US
+0,coasttocoastam.com,low,,,Low with media bias,US
+0,cochrane.org,high,,Pro Science,High with media bias,US
+0,coconinonews.com,low,,,Questionable,US
+6,coelum.com,high,Science vs Conspiracy,,,NA
+0,collective-evolution.com,low,,,Low with media bias,US
+17,comedonchisciotte.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+37,compressamente.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,concernedwomen.org,low,,,Questionable,US
+49,conoscenzealconfine.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,consciouslifenews.com,low,,,Low with media bias,US
+0,conservapedia.com,low,,,Questionable,US
+0,conservativeammo.com,low,,,Questionable,US
+0,conservativebeaver.com,low,,,Questionable,US
+0,conservativebuzz.com,low,,,Questionable,US
+0,conservativebyte.com,low,,,Low with media bias,US
+0,conservativedailynews.com,low,,,Questionable,US
+0,conservativedailypost.com,low,,,Questionable,US
+0,conservativefiringline.com,low,,,Low with media bias,US
+0,conservativefreepress.com,low,,,Questionable,US
+0,conservativematrix.com,low,,,Questionable,US
+0,conservativemedia.com,low,,,Questionable,US
+0,conservativeoutfitters.com,low,,,Low with media bias,US
+0,conservativepost.com,low,,,Low with media bias,US
+0,conservativereview.com,high,,,High with media bias,US
+0,conservativetoday.org,low,,,Questionable,US
+0,conservativetribune.com,low,,,Low with media bias,US
+0,constitutionstatenews.com,low,,,Questionable,US
+0,consumerlab.com,high,,Pro Science,,US
+2,corriere.it,high,VaccinItaly,,High with media bias,VaccinItaly
+46,corrieredelcorsaro.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,corvelva.it,low,,,"""Associazione CORVELVA - Coordinamento Regionale Veneto per la Libertà delle Vaccinazioni"", non riporta fonti, informazioni autori e staff non disponibili, autoreferenziale",VaccinItaly
+0,cosmosmagazine.com,high,,Pro Science,,US
+0,countdowntozerotime.com,low,,,Low with media bias,US
+0,counterpsyops.com,low,,,Low with media bias,US
+0,crainsdetroit.com,high,,,High,US
+0,creambmp.com,low,,,Low with media bias,US
+0,crooksandliars.com,high,,,High with media bias,US
+0,csmonitor.com,high,,,High,US
+0,c-span.org,high,,,High,US
+0,ctvnews.ca,high,,,High,US
+0,dailybuzzlive.com,low,,,Low with media bias,US
+0,dailycaller.com,high,,,High with media bias,US
+0,dailycurrant.com,low,,,Low with media bias,US
+0,dailyheadlines.net,low,,,Questionable,US
+0,dailykos.com,high,,,High with media bias,US
+0,dailymail.co.uk,high,,,High with media bias,US
+0,dailynewsbin.com,low,,,Low with media bias,US
+0,dailynewsbin.com,high,,,High with media bias,US
+0,dailypoliticalnewswire.com,low,,,Questionable,US
+0,dailyrecord.com,high,,,High,US
+7,daily-screen.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,dailystar.co.uk,low,,,Questionable,US
+0,dailystormer.com,low,,,Low with media bias,US
+0,dailystormer.name,low,,,Questionable,US
+0,dailywire.com,high,,,High with media bias,US
+0,dcalert.com,low,,,Questionable,US
+0,dcbluedot.com,low,,,Questionable,US
+0,dcclothesline.com,low,,,Low with media bias,US
+0,dcdirtylaundry.com,low,,,Questionable,US
+0,dcgazette.com,low,,,Questionable,US
+0,debka.com,low,,,Questionable,US
+0,decaturtimes.com,low,,,Questionable,US
+0,deepleftfield.info,low,,,Questionable,US
+0,defendevropa.org,low,,,Questionable,US
+0,defiantamerica.com,low,,,Questionable,US
+0,democrats.org,low,,,Questionable,US
+0,demyx.com,low,,,Low with media bias,US
+0,denvercitywire.com,low,,,Questionable,US
+0,denverguardian.com,low,,,Low with media bias,US
+0,departed.co,low,,,Low with media bias,US
+0,deplorablekel.com,low,,,Questionable,US
+0,derfmagazine.com,low,,,Low with media bias,US
+-1,dianalanciotti.it,low,,,blog personale senza fonti differenziate,VaccinItaly
+18,direttanews24.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,disabilityscoop.com,high,,,High,US
+0,disclose.tv,low,,,Low with media bias,US
+0,discovermagazine.com,high,,Pro Science,,US
+0,discoverthenetworks.org,low,,,Questionable,US
+50,disinformazione.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,djhjmedia.com,low,,,Questionable,US
+0,dnyuz.com,low,,,Questionable,US
+0,downtrend.com,low,,,Low with media bias,US
+0,drugs.com,high,,Pro Science,,US
+0,duffelblog.com,low,,,Low with media bias,US
+0,duhprogressive.com,low,,,Low with media bias,US
+0,eaglerising.com,low,,,Low with media bias,US
+0,eagletribune.com,high,,,High,US
+0,earthobservatory.nasa.gov,high,,,High,US
+0,earthsky.org,high,,Pro Science,,US
+0,eastalamedanews.com,low,,,Questionable,US
+0,eastarapahoenews.com,low,,,Questionable,US
+0,eastarizonanews.com,low,,,Questionable,US
+0,eastcontracostanews.com,low,,,Questionable,US
+0,eastlittlerocktimes.com,low,,,Questionable,US
+0,eastsandiegonews.com,low,,,Questionable,US
+0,eastsbvtimes.com,low,,,Questionable,US
+0,eastsfvtoday.com,low,,,Questionable,US
+0,eastsierranews.com,low,,,Questionable,US
+0,eastventuranews.com,low,,,Questionable,US
+0,ecalabamanews.com,low,,,Questionable,US
+51,ecplanet.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,edge.org,high,,Pro Science,,US
+52,effervescienza.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,elizabethjohnston.org,low,,,Low with media bias,US
+0,emirates247.com,low,,,Questionable,US
+0,empireherald.com,low,,,Low with media bias,US
+0,empirenews.net,low,,,Low with media bias,US
+0,empiresports.co,low,,,Low with media bias,US
+0,en.bbarta24.net,low,,,Low,US
+0,en.mediamass.net,low,,,Low with media bias,US
+0,endingthefed.com,low,,,Low with media bias,US
+0,endingthefed.com,high,,,High with media bias,US
+0,endthefed.org,low,,,Questionable,US
+0,endtimeheadlines.org,low,,,Low with media bias,US
+0,enduringvision.com,low,,,Low with media bias,US
+0,english.alarabiya.net,low,,,Low with media bias,US
+0,english.almanar.com.lb,low,,,Low with media bias,US
+0,english.cctv.com,low,,,Questionable,US
+19,essere-informati.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,eurekalert.org,high,,Pro Science,,US
+0,eutimes.net,low,,,Low with media bias,US
+0,everydayhealth.com,high,,Pro Science,,US
+0,everylegalvote.com,low,,,Questionable,US
+0,everytownresearch.org,low,,,Questionable,US
+0,evil.news,low,,,Questionable,US
+0,examine.com,high,,Pro Science,,US
+0,explainlife.com,low,,,Questionable,US
+0,exposinggovernment.com,low,,,Questionable,US
+0,facebook.com/conservativepoliticstoday,low,,,Questionable,US
+0,factcheck.org,high,,,High,US
+0,factcheckingturkey.com,low,,,Questionable,US
+6,fanpage.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,fas.org,high,,Pro Science,,US
+0,fellowshipoftheminds.com,low,,,Low with media bias,US
+53,filosofiaelogos.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,fivethirtyeight.com,high,,,High with media bias,US
+0,flyheight.com,low,,,Low with media bias,US
+0,forbes.com,high,,,High with media bias,US
+0,foreignpolicy.com,high,,,High with media bias,US
+0,fortune.com,high,,,High with media bias,US
+0,fourstateshomepage.com,high,,,High,US
+0,foxnews.com,high,,,High with media bias,US
+0,fprnradio.com,low,,,Low with media bias,US
+0,freebeacon.com,high,,,High with media bias,US
+38,freeondarevolution.wordpress.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,freewoodpost.com,low,,,Low with media bias,US
+0,frontiersin.org,high,,Pro Science,,US
+0,frontpagemag.com,low,,,Low with media bias,US
+0,ft.com,high,,,High,US
+0,fury.news,low,,,Low with media bias,US
+0,futurism.com,high,,Pro Science,,US
+18,galileonet.it,high,Science vs Conspiracy,,,NA
+0,genengnews.com,high,,Pro Science,,US
+0,geneticliteracyproject.org,high,,Pro Science,,US
+0,geoengineeringwatch.org,low,,,Low with media bias,US
+0,getoffthebs.com,low,,,Low with media bias,US
+0,globalassociatednews.com,low,,,Low with media bias,US
+0,globalresearch.ca,low,,,Low with media bias,US
+0,gomerblog.com,low,,,Low with media bias,US
+0,gopthedailydose.com,low,,,Low with media bias,US
+0,gotnews.com,low,,,Low with media bias,US
+0,govtslaves.info,low,,,Low with media bias,US
+5,gravitzero.com,high,Science vs Conspiracy,,,NA
+0,gulagbound.com,low,,,Low with media bias,US
+54,hackthematrix.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,hangthebankers.com,low,,,Low with media bias,US
+0,hannity.com,high,,,High with media bias,US
+0,healio.com,high,,Pro Science,,US
+0,healthaffairs.org,high,,Pro Science,,US
+0,healthdata.org,high,,Pro Science,,US
+0,healthfeedback.org,high,,Pro Science,,US
+0,healthline.com,high,,,High,US
+0,hollywoodreporter.com,high,,,High with media bias,US
+21,home.infn.it,high,Science vs Conspiracy,,,NA
+0,hopkinsmedicine.org,high,,Pro Science,,US
+0,hotair.com,high,,,High with media bias,US
+0,huffingtonpost.com,high,,,High with media bias,US
+11,huffingtonpost.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,humansarefree.com,low,,,Low with media bias,US
+0,huzlers.com,low,,,Low with media bias,US
+0,ibtimes.com,high,,,High with media bias,US
+0,ieee.org,high,,Pro Science,,US
+0,ifyouonlynews.com,low,,,Low with media bias,US
+0,ijr.com,high,,,High with media bias,US
+48,ilfattoquotidaino.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+5,ilfattoquotidiano.it,high,VaccinItaly,,High with media bias,VaccinItaly
+-1,ilfoglio.it,high,,,schierato ma quotidiano italiano,VaccinItaly
+17,ilgazzettino.it,high,VaccinItaly,,High with media bias,VaccinItaly
+20,il-giornale.info,low,VaccinItaly,,Low with media bias,VaccinItaly
+8,ilgiornale.it,high,VaccinItaly,,High with media bias,VaccinItaly
+14,ilmattino.it,high,VaccinItaly,,High with media bias,VaccinItaly
+4,ilmessaggero.it,high,VaccinItaly,,High with media bias,VaccinItaly
+3,ilmessangero.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,ilovemyfreedom.org,high,,,High with media bias,US
+19,ilpost.it,high,VaccinItaly,,High with media bias,VaccinItaly
+65,ilprimatonazionale.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+55,ilpuntosulmistero.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+"8, 21",il-quotidiano.info,low,VaccinItaly,,,VaccinItaly
+39,ilsapereepotere2.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+10,ilsole24ore.com,high,VaccinItaly,,High with media bias,VaccinItaly
+23,iltempo.it,high,VaccinItaly,,High with media bias,VaccinItaly
+11,ilvostropensiero.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+66,imolaoggi.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,independent.co.uk,high,,,High with media bias,US
+21,infn.it,high,Science vs Conspiracy,,,NA
+22,informarexresistere.fr,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,informazione.it,high,,,confrontato con ad esempio leggo.it che figura tra High (secondo Pierri),VaccinItaly
+23,informazionelibera.eu,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,infowars.com,low,,,Low with media bias,US
+0,insidescience.org,high,,Pro Science,,US
+0,intellihub.com,low,,,Low with media bias,US
+13,interagisco.net,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,investors.com,high,,,High with media bias,US
+0,iop.org,high,,Pro Science,,US
+0,irena.org,high,,,High,US
+0,ispp.org/news/journal,high,,Pro Science,,US
+0,issues.org,high,,Pro Science,,US
+71,it.sputniknews.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,itaglive.com,low,,,Low with media bias,US
+25,italianosveglia.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+24,jedanews.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,jonesreport.com,low,,,Low with media bias,US
+0,jookos.com,low,,,Low with media bias,US
+0,journals.sagepub.com,high,,Pro Science,,US
+0,jp.reuters.com,high,,,High,US
+0,jstor.org,high,,Pro Science,,US
+0,judicialwatch.org,low,,,Low with media bias,US
+0,judicialwatch.org,high,,,High with media bias,US
+-1,la7.it,high,,,testata giornalistica,VaccinItaly
+-1,lanuovabq.it,low,,,autodefiniti gruppo di giornalisti cattolici,VaccinItaly
+-1,laseroffice.it,low,,,aggregatore e sito non sicuro,VaccinItaly
+9,lastampa.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,latimes.com,high,,,High with media bias,US
+0,latitudes.org,low,,,Low with media bias,US
+70,laverita.info,low,VaccinItaly,,Low with media bias,VaccinItaly
+40,laveritadininconaco.altervista.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+68,lavocedelpatriota.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+29,leganerd.com,high,Science vs Conspiracy,,,NA
+13,leggo.it,high,VaccinItaly,,High with media bias,VaccinItaly
+-1,lercio.it,low,,,La fonte sarebbe attendibile in realtá in quanto dichiaratamente SATIRA e dichiara che tutte le notizie sono false in maniera CHIARA,VaccinItaly
+15,lescienze.it,high,Science vs Conspiracy,,,NA
+21,lettera43.it,high,VaccinItaly,,High with media bias,VaccinItaly
+12,lettoquotidiano.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,lewrockwell.com,low,,,Low with media bias,US
+0,liberalamerica.org,low,,,Low with media bias,US
+57,liberamenteservo.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+12,liberascienza.it,high,Science vs Conspiracy,,,NA
+69,liberoquotidiano.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,libertymovementradio.com,low,,,Low with media bias,US
+0,libertytalk.fm,low,,,Low with media bias,US
+0,libertyvideos.org,low,,,Low with media bias,US
+56,libreidee.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,lifezette.com,high,,,High with media bias,US
+0,lightlybraisedturnip.com,low,,,Low with media bias,US
+-1,linkiesta.it,high,,,"riporta gi autori degli articoli, direttore ha lavorato per testate autorevoli, registrata presso il tribunale di milano",VaccinItaly
+0,livescience.com,high,,,High,US
+26,lonesto.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,louderwithcrowder.com,low,,,Low with media bias,US
+41,madreterra.myblog.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+1,mag24.es,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,mashable.com,high,,,High with media bias,US
+-1,maurizioblondet.it,low,,,"regole chiare sull uso del blog e fonti, giornalista che ha collaborato con diverse testate ma classificato come low per analogia a dagospia",VaccinItaly
+0,mayoclinic.org,high,,Pro Science,,US
+0,mediaite.com,high,,,High with media bias,US
+0,mediamatters.org,high,,,High with media bias,US
+0,medicaldaily.com,high,,Pro Science,High with media bias,US
+0,medicalnewstoday.com,high,,,High with media bias,US
+0,medicalxpress.com,high,,Pro Science,High with media bias,US
+26,medicisenzafrontiere.it,high,Science vs Conspiracy,,,NA
+0,medpagetoday.com,high,,,High with media bias,US
+0,medscape.com,high,,Pro Science,High with media bias,US
+0,mentaldaily.com,high,,Pro Science,High with media bias,US
+4,mondodiannunci.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,money.it,high,,,"per analogia con altri siti su temi di finanza, anche alla luce dello score di alexa.com/siteinfo di overlap con i visitatori di altri siti di high cred (sole24h, etc) ",VaccinItaly
+0,mosaicscience.com,high,,Pro Science,,US
+0,motherjones.com,high,,,High with media bias,US
+0,msn.com,high,,,High,US
+0,msnbc.com,high,,,High with media bias,US
+0,myfreshnews.com,low,,,Low with media bias,US
+15,nanopress.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,nasa.gov,high,,Pro Science,,US
+0,nationalacademyofsciences.org,high,,Pro Science,,US
+0,nationalgeographic.com,high,,,High,US
+0,nationalreport.net,low,,,Low with media bias,US
+0,nationalreview.com,high,,,High with media bias,US
+0,naturalnews.com,low,,,Low with media bias,US
+0,nature.com,high,,Pro Science,,US
+0,nautil.us,high,,Pro Science,,US
+0,nbcnews.com,high,,,High with media bias,US
+0,nbcnews.to,high,,,High,US
+0,ncdc.noaa.gov,high,,Pro Science,,US
+0,ncscooper.com,low,,,Low with media bias,US
+0,nejm.org,high,,Pro Science,,US
+42,neovitruvian.wordpress.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,neurosciencenews.com,high,,Pro Science,,US
+0,newatlas.com,high,,Pro Science,,US
+0,newhumanist.org.uk,high,,Pro Science,,US
+0,news.sky.com,high,,,High,US
+0,news.yahoo.co,high,,,High,US
+0,news.yahoo.com,high,,,High,US
+0,newsbiscuit.com,low,,,Low with media bias,US
+0,newsbusters.org,high,,,High with media bias,US
+0,newscientist.com,high,,Pro Science,,US
+0,newslo.com,low,,,Low with media bias,US
+0,newsmax.com,high,,,High with media bias,US
+0,newsmutiny.com,low,,,Low with media bias,US
+0,newsninja2012.com,high,,,High with media bias,US
+0,newsrescue.com,low,,,Low with media bias,US
+0,newsweek.com,high,,,High with media bias,US
+0,newswire-24.com,low,,,Low with media bias,US
+0,newyorker.com,high,,,High with media bias,US
+0,nextbigfuture.com,high,,Pro Science,,US
+0,nextobserver.com,high,,Pro Science,,US
+58,nibiru2012.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,nicolaporro.it,low,,,"vicedirettore de il giornale, conduttore: blog classificato come low per analogia con dagospia",VaccinItaly
+0,nih.gov,high,,Pro Science,,US
+0,noaa.gov,high,,Pro Science,,US
+0,nodisinfo.com,low,,,Low with media bias,US
+32,noidiminerva.it,high,Science vs Conspiracy,,,NA
+2,notiziarioromacapitale.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,notiziedi.it,high,,,simile ad altri categorizzati come high (secondo Pierri),VaccinItaly
+-1,novanews24.altervista.org,low,,,"scarsa qualita di contenuti, aggregatore da fonti varie",VaccinItaly
+0,now8news.com,low,,,Low with media bias,US
+0,nowtheendbegins.com,low,,,Low with media bias,US
+0,npr.org,high,,,High with media bias,US
+-1,numero6.org,low,,,"Piattaforma parzialmente chiusa con alcuni articoli accessibili solo agli abbonati. Chi interviene lo puo fare sotto nickname, non necessariamente con Nome Cognome
+Pubblicitá, articoli dai titoli altisonanti su temi vari (anche UFO, alieni eccetera)",VaccinItaly
+0,nutra-lifestyle.com,low,,,Low with media bias,US
+0,nydailynews.com,high,,,High with media bias,US
+0,nymag.com,high,,,High with media bias,US
+0,nypost.com,high,,,High with media bias,US
+0,nyti.ms,high,,,High,US
+0,nytimes.com,high,,,High with media bias,US
+0,observatorial.com,low,,,Low with media bias,US
+0,observer.com,high,,,High with media bias,US
+0,occupydemocrats.com,low,,,Low with media bias,US
+0,occupydemocrats.com,high,,,High with media bias,US
+0,oceana.org,high,,Pro Science,,US
+3,oggiscienza.it,high,Science vs Conspiracy,,,NA
+43,olivieromannucci.blogspot.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,onlinelibrary.wiley.com/journal/10.1111/(ISSN)1467-9221,high,,Pro Science,,US
+-1,open.online,high,,,"Edito da una società a impresa sociale fondata da Enrico Mentana. 
+Il sito riporta ""Da aprile 2021 siamo membri dell’IFCN (International Fact-Checking Network)"" e sembra orientato al Fact-checking.",VaccinItaly
+-1,opiniapublica.info,low,,,"sembra un aggregatore non nella lingua nazionale, forse in RUMENO",VaccinItaly
+0,other98.com,low,,,Low with media bias,US
+0,paho.org,high,,Pro Science,,US
+0,pakalertpress.com,low,,,Low with media bias,US
+59,pandoratv.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,people.com,high,,,High with media bias,US
+0,phys.org,high,,Pro Science,,US
+44,pianetax.wordpress.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,pinomerola.com,low,,,"riporta notize ma senza le fonti, temi fiscali e servizi a pagamento, va a parole chiave anche sugli articoli",VaccinItaly
+0,pjmedia.com,high,,,High with media bias,US
+-1,playhitmusic.it,low,,,Maintenance Mode (last check on 5 May 2021) senza alcun dettaglio sulle tempistiche di ritorno a operare,VaccinItaly
+0,plos.org,high,,Pro Science,,US
+0,pnas.org,high,,Pro Science,,US
+0,politicalblindspot.com,low,,,Low with media bias,US
+0,politicalears.com,low,,,Low with media bias,US
+0,politico.com,high,,,High with media bias,US
+0,politicops.com,low,,,Low with media bias,US
+0,politicususa.com,low,,,Low with media bias,US
+0,politicususa.com,high,,,High with media bias,US
+0,politifact.com,high,,,High with media bias,US
+0,popsci.com,high,,Pro Science,,US
+0,popularmechanics.com,high,,Pro Science,,US
+0,powderedwigsociety.com,low,,,Low with media bias,US
+0,precisionvaccinations.com,high,,Pro Science,,US
+0,prisonplanet.com,low,,,Low with media bias,US
+0,proudcons.com,low,,,Low with media bias,US
+0,psychcentral.com,high,,Pro Science,,US
+0,psychologytoday.com,high,,Pro Science,,US
+0,psypost.org,high,,,High,US
+0,public.wmo.int,high,,Pro Science,,US
+0,pubmed.ncbi.nlm.nih.gov,high,,Pro Science,,US
+0,quackwatch.org,high,,Pro Science,,US
+0,quantamagazine.org,high,,Pro Science,,US
+4,queryonline.it,high,Science vs Conspiracy,,,NA
+12,quotidiano.net,high,VaccinItaly,,High with media bias,VaccinItaly
+-1,quotidianopiemontese.it,high,,,"testata digitale registrata, riporta spesso le fonti",VaccinItaly
+-1,radioradio.it,low,,,per contenuti e toni degli articoli,VaccinItaly
+-1,rai.it,high,,,Radio Televisione Italiana,VaccinItaly
+18,rainews.it,high,VaccinItaly,,High with media bias,VaccinItaly
+-1,rassegneitalia.info,low,,,Non riporta autori e fonti o sembra cmq un parablog di un unico autore,VaccinItaly
+0,rawstory.com,high,,,High with media bias,US
+0,react365.com,low,,,Low with media bias,US
+0,realclearpolitics.com,high,,,High with media bias,US
+0,realclearscience.com,high,,Pro Science,,US
+0,realclimate.org,high,,Pro Science,,US
+0,realfarmacy.com,low,,,Low with media bias,US
+0,realmofhistory.com,high,,Pro Science,,US
+0,realnewsrightnow.com,low,,,Low with media bias,US
+0,redflagnews.com,low,,,Low with media bias,US
+0,redstate.com,low,,,Low with media bias,US
+0,redstate.com,high,,,High with media bias,US
+0,religiousmind.com,low,,,Low with media bias,US
+-1,renovatio21.com,low,,,per i titoli e i temi degloi articoli,VaccinItaly
+1,repubblica.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,researchantisemitism.ca,low,,,Questionable,US
+0,researchgate.net,high,,Pro Science,,US
+0,resourcewatch.org,high,,Pro Science,,US
+0,retractionwatch.com,high,,Pro Science,,US
+0,reut.rs,high,,,High,US
+0,reuters.com,high,,,High with media bias,US
+0,rickwells.us,low,,,Low with media bias,US
+0,rightsidenews.com,low,,,Low with media bias,US
+0,rilenews.com,low,,,Low with media bias,US
+0,rockcitytimes.com,low,,,Low with media bias,US
+0,rt.com,high,,,High with media bias,US
+-1,salernonotizie.it,low,,,"non riporta sempre le fonti, è piu aggregatore",VaccinItaly
+0,salon.com,high,,,High with media bias,US
+29,saper-link-news.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,satiratribune.com,low,,,Low with media bias,US
+-1,scenarieconomici.it,low,,,"non completamente convincente: autori con ""lista incompleta in via di arricchimento"".
+Punta molto sul numero di visite giornaliere e anche l'ordine/il tipo di informazione con cui viene presentato il sito non dá una sensazione di autorevolezza/credibilitá",VaccinItaly
+24,scetticamente.it,high,Science vs Conspiracy,,,NA
+0,scicentral.com,high,,Pro Science,,US
+0,science.energy.gov,high,,Pro Science,,US
+0,sciencealert.com,high,,Pro Science,,US
+0,sciencebasedmedicine.org,high,,Pro Science,,US
+0,scienceblogs.com,high,,Pro Science,,US
+0,sciencedaily.com,high,,,High,US
+0,sciencedirect.com,high,,Pro Science,,US
+0,sciencefeedback.co,high,,Pro Science,,US
+0,sciencehistory.org,high,,Pro Science,,US
+0,scienceillustrated.com.au,high,,Pro Science,,US
+0,sciencemag.org,high,,Pro Science,,US
+0,sciencemediacentre.org,high,,Pro Science,,US
+0,sciencenews.org,high,,Pro Science,,US
+0,sciencetrends.com,high,,Pro Science,,US
+0,scientificamerican.com,high,,,High,US
+1,scientificast.it,high,Science vs Conspiracy,,,NA
+17,scienzainrete.it,high,Science vs Conspiracy,,,NA
+13,scienze-naturali.it,high,Science vs Conspiracy,,,NA
+0,scripps.ucsd.edu/news,high,,Pro Science,,US
+0,secondamendmentdaily.com,low,,,Low with media bias,US
+0,seeker.com,high,,Pro Science,,US
+0,shareblue.com,high,,,High with media bias,US
+0,shariaunveiled.wordpress.com,low,,,Low with media bias,US
+47,siamonapoletani.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+27,silenziefalsita.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,singularityhub.com,high,,Pro Science,,US
+0,sites.agu.org,high,,Pro Science,High with media bias,US
+0,skepdic.com,high,,Pro Science,,US
+0,skeptic.com,high,,Pro Science,,US
+0,skepticalinquirer.org,high,,Pro Science,,US
+0,skepticalraptor.com,high,,Pro Science,,US
+0,skepticalscience.com,high,,Pro Science,,US
+0,skeptics.com.au,high,,Pro Science,High with media bias,US
+0,skeptoid.com,high,,,High,US
+0,skyandtelescope.org,high,,Pro Science,,US
+5,skynew.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+64,skytg24news.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,slate.com,high,,,High with media bias,US
+0,smithsonianmag.com,high,,Pro Science,,US
+0,societyforscience.org,high,,Pro Science,,US
+28,sostenitori.info,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,sourceplanet.net,low,,,Low with media bias,US
+0,space.com,high,,Pro Science,,US
+-1,startmag.it,high,,,"indipendente, sembra simile a leggo.it e altri classificati come high, direttore reponsabile ha lavorato per testate attendibili",VaccinItaly
+0,stateofthenation2012.com,low,,,Low with media bias,US
+-1,stopcensura.online,low,,,per contenuti e tipo di articoli,VaccinItaly
+0,stuppid.com,low,,,Low with media bias,US
+30,superquark.rai.it,high,Science vs Conspiracy,,,NA
+0,superstation95.com,low,,,Low with media bias,US
+0,tacticalinvestor.com,low,,,Low with media bias,US
+0,talkingpointsmemo.com,high,,,High with media bias,US
+61,tankerenemy.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,teaparty.org,low,,,Low with media bias,US
+0,technologyreview.com,high,,Pro Science,,US
+0,techxplore.com,high,,Pro Science,,US
+0,telegraph.co.uk,high,,,High with media bias,US
+"45, 62",terrarealtime.blogspot.com,low,VaccinItaly,,,VaccinItaly
+0,tfp.org,low,,,Low with media bias,US
+16,tg24.sky.it,high,VaccinItaly,,High with media bias,VaccinItaly
+30,tg24-ore.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+3,tgcom24.mediaset.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,theamericanmirror.com,high,,,High with media bias,US
+0,theatlantic.com,high,,,High with media bias,US
+0,theblaze.com,low,,,Low with media bias,US
+0,theblaze.com,high,,,High with media bias,US
+0,thebostontribune.com,low,,,Low with media bias,US
+0,theconservativetreehouse.com,high,,,High with media bias,US
+0,thedailybeast.com,high,,,High with media bias,US
+0,thedailysheeple.com,low,,,Low with media bias,US
+0,thedcgazette.com,low,,,Low with media bias,US
+0,theeventchronicle.com,low,,,Low with media bias,US
+0,thefederalist.com,high,,,High with media bias,US
+0,thefederalistpapers.org,low,,,Low with media bias,US
+0,thefreepatriot.org,low,,,Low with media bias,US
+0,thefreethoughtproject.com,low,,,Low with media bias,US
+0,thegatewaypundit.com,low,,,Low with media bias,US
+0,theguardian.com,high,,,High with media bias,US
+0,thehill.com,high,,,High with media bias,US
+0,theintercept.com,high,,,High with media bias,US
+0,thelancet.com,high,,Pro Science,,US
+0,thelapine.ca,low,,,Low with media bias,US
+0,thelastamericanvagabond.com,low,,,Low with media bias,US
+0,thenation.com,high,,,High with media bias,US
+0,theness.com,high,,Pro Science,,US
+0,thenewsclub.info,low,,,Low with media bias,US
+0,thenewsnerd.com,low,,,Low with media bias,US
+0,theonion.com,low,,,Low with media bias,US
+0,thepoliticalinsider.com,low,,,Low with media bias,US
+0,theracketreport.com,low,,,Low with media bias,US
+0,therealstrategy.com,low,,,Low with media bias,US
+0,therightscoop.com,low,,,Low with media bias,US
+0,therundownlive.com,low,,,Low with media bias,US
+0,the-scientist.com,high,,Pro Science,,US
+0,thespoof.com,low,,,Low with media bias,US
+0,thetruthdivision.com,low,,,Low with media bias,US
+0,theuspatriot.com,low,,,Low with media bias,US
+0,thinkprogress.org,high,,,High with media bias,US
+-1,tigulliomagazine.wordpress.com,low,,,SITO SOSPESO PER VIOLAZIONE DEI TERMINI DI SERVIZIO di wordpress.com,VaccinItaly
+0,time.com,high,,,High with media bias,US
+-1,tio.ch,high,,,testata locale,VaccinItaly
+60,tmcrew.org,low,VaccinItaly,,Low with media bias,VaccinItaly
+24,today.it,high,VaccinItaly,,High with media bias,VaccinItaly
+0,townhall.com,high,,,High with media bias,US
+0,trueactivist.com,low,,,Questionable,US
+0,truepundit.com,high,,,High with media bias,US
+0,trunews.com,low,,,Low with media bias,US
+0,truthfeed.com,low,,,Low with media bias,US
+0,truthfrequencyradio.com,low,,,Low with media bias,US
+0,truthuncensored.net,low,,,Low with media bias,US
+31,tuttiicriminidegliimmigrati.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,twitchy.com,low,,,Low with media bias,US
+0,unconfirmedsources.com,low,,,Low with media bias,US
+0,understandrealitythroughscience.blogspot.com,high,,Pro Science,,US
+-1,unionesarda.it,high,,,testata locale (anche di antica data),VaccinItaly
+0,universetoday.com,high,,Pro Science,,US
+63,ununiverso.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,us24news.com,low,,,Low with media bias,US
+0,usapoliticsnow.com,low,,,Low with media bias,US
+0,usasupreme.com,low,,,Low with media bias,US
+0,usatoday.com,high,,,High with media bias,US
+0,usuncut.com,low,,,Low with media bias,US
+0,usuncut.com,high,,,High with media bias,US
+-1,va.newsrepublic.net,low,,,not found,VaccinItaly
+0,vaxopedia.org,high,,Pro Science,,US
+16,verascienza.com,high,Science vs Conspiracy,,8 May 2021: https://twitter.com/verascienza retweets Roberto Burioni,NA
+0,verywell.com,high,,Pro Science,,US
+0,veteranstoday.com,low,,,Low with media bias,US
+0,viralliberty.com,low,,,Low with media bias,US
+67,viralmagazine.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,vox.com,high,,,High with media bias,US
+32,voxnews.info,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,wakingupwisconsin.com,low,,,Low with media bias,US
+0,wapo.st,high,,,High,US
+0,washingtonexaminer.com,high,,,High with media bias,US
+0,washingtonpost.com,high,,,High with media bias,US
+0,washingtontimes.com,high,,,High with media bias,US
+0,watchers.news,high,,Pro Science,,US
+0,wearechange.org,low,,,Low with media bias,US
+0,weaselzippers.us,high,,,High with media bias,US
+0,web.randi.org,high,,Pro Science,,US
+0,webmd.com,high,,Pro Science,,US
+33,webtg24.com,low,VaccinItaly,,Low with media bias,VaccinItaly
+0,weeklystandard.com,high,,,High with media bias,US
+0,weeklyworldnews.com,low,,,Low with media bias,US
+0,westernjournal.com/ct,low,,,Questionable,US
+0,westernjournalism.com,high,,,High with media bias,US
+0,westernsentinel.com,low,,,Low with media bias,US
+0,whatdoesitmean.com,low,,,Low with media bias,US
+0,who.int,high,,Pro Science,High,US
+0,wideawakeamerica.com,low,,,Low with media bias,US
+0,winningdemocrats.com,low,,,Low with media bias,US
+-1,wired.it,high,,,Rivista autorevole in campo di informazione innovazione/tech,VaccinItaly
+0,witscience.org,low,,,Low with media bias,US
+0,wnd.com,low,,,Low with media bias,US
+0,wnd.com,high,,,High with media bias,US
+0,worldnewsdailyreport.com,low,,,Low with media bias,US
+0,worldometers.info,high,,,High with media bias,US
+0,worldtruth.tv,low,,,Low with media bias,US
+0,wsj.com,high,,,High with media bias,US
+0,yournewswire.com,low,,,Low with media bias,US
+6,zapping2017.myblog.it,low,VaccinItaly,,Low with media bias,VaccinItaly
+-1,zazoom.it,low,,,aggregatore di fonti dubbie (anche astrologia e gossip),VaccinItaly
+0,zerohedge.com,low,,,Low with media bias,US
+-1,ziare.com,low,,,sito in lungua non nazionale (forse rumeno): dati covid poco aggiornati nel tmepo e temi vari,VaccinItaly
+0,zmescience.com,high,,Pro Science,,US
