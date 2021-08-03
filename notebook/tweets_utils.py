@@ -38,9 +38,9 @@ def url_decompress(url):
         return url[0]
 
 def process_data_tweets(df: pd.DataFrame):
-    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
+#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
-    reply = df[df['in_reply_to_status_id'].notna()]
+#     reply = df[df['in_reply_to_status_id'].notna()]
 #     tweet_creation = []
 #     for x in df['created_at']:
 #         data = (str(x))
@@ -179,8 +179,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                     futures.append(executor.submit(process_data_tweets, sc))
-                    futures.append(executor.submit(process_data_disinformation, sc, list_name))
+                    futures.append(executor.submit(process_data_tweets, sc))
+#                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
                 else:
                     futures.append(executor.submit(process_data_users, sc))
 
@@ -212,3 +212,4 @@ def process_bots(df: pd.DataFrame, bots):
         if found[0] > 0:
             print("funzione che mi ritorna le info per quell'id")
             #funzione che mi ritorna le info per quell'id
+        
