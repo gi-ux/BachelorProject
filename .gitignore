@@ -130,3 +130,5 @@ dmypy.json
 
 to_be_scored/*.csv
 notebook/config.json
+
+large_files/*

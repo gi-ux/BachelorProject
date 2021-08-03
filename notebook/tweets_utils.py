@@ -49,20 +49,20 @@ def process_data_tweets(df: pd.DataFrame):
     return {
 #             "ids": df["user_id"], 
 #             "users": df["user_screen_name"],
-            "original_ids": original["user_id"], 
-            "original_users": original["user_screen_name"], 
-            "reply_ids": reply['user_id'], 
-            "reply_users": reply['user_screen_name'],
-            "replied_ids": reply['in_reply_to_user_id'], 
-            "replied_users": reply['in_reply_to_screen_name'],
-            "retweet_ids": retweet["user_id"], 
+#             "original_ids": original["user_id"], 
+#             "original_users": original["user_screen_name"], 
+#             "reply_ids": reply['user_id'], 
+#             "reply_users": reply['user_screen_name'],
+#             "replied_ids": reply['in_reply_to_user_id'], 
+#             "replied_users": reply['in_reply_to_screen_name'],
+#             "retweet_ids": retweet["user_id"], 
             "retweet_users": retweet["user_screen_name"],
-            "retweeted_ids": retweet['rt_user_id'], 
+#             "retweeted_ids": retweet['rt_user_id'], 
             "retweeted_users": retweet['rt_user_screen_name'],
-            "total_len" :len(df), 
-            "original_len": len(original), 
-            "retweet_len": len(retweet), 
-            "reply_len": len(reply)
+#             "total_len" :len(df), 
+#             "original_len": len(original), 
+#             "retweet_len": len(retweet), 
+#             "reply_len": len(reply)
 #             "creation": tweet_creation
     }
 
@@ -160,7 +160,7 @@ def process_data_disinformation(df: pd.DataFrame, lista):
         "d_reply_len": d_reply_len
     }
 
-def process_all_data(filename, cols, flag, list_name, chunksize=chunksize, workers=workers):
+def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
     executor = ProcessPoolExecutor(max_workers=workers)
     futures = []
