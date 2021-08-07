@@ -6,6 +6,9 @@ from concurrent.futures import wait as futures_wait
 import numpy as np
 import pandas as pd
 import tqdm
+import matplotlib.pyplot as plt
+import plotly.express as px
+
 logger = logging.getLogger("main")
 workers = 7
 chunksize = int(1e6)
@@ -76,14 +79,16 @@ def process_data_users(df: pd.DataFrame):
 def process_data_disinformation(df: pd.DataFrame, lista):
     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
-#     reply = df[df['in_reply_to_status_id'].notna()]
+    reply = df[df['in_reply_to_status_id'].notna()]
     original = original.reset_index(drop=True)
     retweet = retweet.reset_index(drop=True)
-#     reply = reply.reset_index(drop=True)
+    reply = reply.reset_index(drop=True)
     
     original_tweet = []
     original_id = []
     link = []
+#     created_at = []
+    
     disinform_rt_name = []
     disinform_rt_id = []
     rt_name = []
@@ -95,15 +100,15 @@ def process_data_disinformation(df: pd.DataFrame, lista):
 #     rp_id = []
     
     res = 0
-#     d_total_len = 0
-#     d_original_len = 0
-#     d_retweet_len = 0
-#     d_reply_len = 0
+    d_total_len = 0
+    d_original_len = 0
+    d_retweet_len = 0
+    d_reply_len = 0
     
     for i in original["user_screen_name"]:
         if(found(i,lista)):
-#             d_total_len = d_total_len + 1
-#             d_original_len = d_original_len + 1
+            d_total_len = d_total_len + 1
+            d_original_len = d_original_len + 1
             val = list(original["user_screen_name"]).index(i,res)
             original_tweet.append(i)
             original_id.append(original["user_id"][val])
@@ -112,8 +117,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     res = 0
     for i in retweet["rt_user_screen_name"]:
         if(found(i,lista)):
-#             d_total_len = d_total_len + 1
-#             d_retweet_len = d_retweet_len + 1
+            d_total_len = d_total_len + 1
+            d_retweet_len = d_retweet_len + 1
             val = list(retweet["rt_user_screen_name"]).index(i,res)
             disinform_rt_name.append(i)
             disinform_rt_id.append(retweet["rt_user_id"][val])
@@ -124,8 +129,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     res = 0
     for i in retweet["user_screen_name"]:
         if(found(i,lista)):
-#             d_total_len = d_total_len + 1
-#             d_retweet_len = d_retweet_len + 1
+            d_total_len = d_total_len + 1
+            d_retweet_len = d_retweet_len + 1
             val = list(retweet["user_screen_name"]).index(i,res)
             disinform_rt_name.append(i)
             disinform_rt_id.append(retweet["rt_user_id"][val])
@@ -162,14 +167,14 @@ def process_data_disinformation(df: pd.DataFrame, lista):
 #         "replied_ids": disinform_replied_id, 
 #         "replied_users": disinform_replied_name,
         #length
-#         "total_len" :len(df), 
-#         "original_len": len(original), 
-#         "retweet_len": len(retweet), 
-#         "reply_len": len(reply),
-#         "d_total_len" :d_total_len, 
-#         "d_original_len": d_original_len, 
-#         "d_retweet_len": d_retweet_len, 
-#         "d_reply_len": d_reply_len
+        "total_len" :len(df), 
+        "original_len": len(original), 
+        "retweet_len": len(retweet), 
+        "reply_len": len(reply),
+        "d_total_len" :d_total_len, 
+        "d_original_len": d_original_len, 
+        "d_retweet_len": d_retweet_len, 
+        "d_reply_len": d_reply_len
     }
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
@@ -214,14 +219,54 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
 
 ############################## Processed Data ##############################  
 
-def search_in_df(df: pd.DataFrame, user):
-    found = df[df['id'].astype(str).str.contains(user)]
-    return found.count()
+def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
+    label = [name1, name2, name3]
+    data = [len1, len2, len3]
+    explode = (0.1, 0.1, 0.1)
 
-def process_bots(df: pd.DataFrame, bots):
-    for i in bots():
-        found = search_in_df(i[0])
-        if found[0] > 0:
-            print("funzione che mi ritorna le info per quell'id")
-            #funzione che mi ritorna le info per quell'id
-        
+    # Creating color parameters
+    colors = ( "lightgreen", "orange", "cyan")
+
+    # Wedge properties
+    wp = { 'linewidth' : 1, 'edgecolor' : "black" }
+
+    # Creating autocpt arguments
+    def func(pct, allvalues):
+        absolute = int(pct / 100.*np.sum(allvalues))
+        return "{:.1f}%\n({:d})".format(pct, absolute)
+
+    # Creating plot
+    fig, ax = plt.subplots(figsize =(10, 7))
+    wedges, texts, autotexts = ax.pie(data, 
+                                      autopct = lambda pct: func(pct, data),
+                                      explode = explode, 
+                                      labels = label,
+                                      shadow = True,
+                                      colors = colors,
+                                      startangle = 90,
+                                      wedgeprops = wp)
+
+    # Adding legend
+    ax.legend(wedges, label,
+              title ="Legend",
+              loc ="center left",
+              bbox_to_anchor =(1, 0, 0.5, 1))
+
+    plt.setp(autotexts, size = 8, weight ="bold")
+    ax.set_title(title)
+    plt.show()
+    
+def stats(total_len, original_len, retweet_len, reply_len):
+    print(f'Number of total tweets: {total_len}')
+    print(f'Number of original tweets: {original_len}')
+    print(f'Number of retweet: {retweet_len}')
+    print(f'Number of reply: {reply_len}')
+
+    perc_original = np.around(original_len*100/total_len,2)
+    perc_retweet = np.around(retweet_len*100/total_len,2)
+    perc_reply = np.around(reply_len*100/total_len,2)
+    print(f'Number of original_tweets: {perc_original}% of total tweets')
+    print(f'Number of retweets: {perc_retweet}% of total tweets')
+    print(f'Number of replies: {perc_reply}% of total tweets')
+
+    print('Check sum == len(tweets): ',original_len + retweet_len + reply_len == total_len)
