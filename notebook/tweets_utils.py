@@ -270,3 +270,35 @@ def stats(total_len, original_len, retweet_len, reply_len):
     print(f'Number of replies: {perc_reply}% of total tweets')
 
     print('Check sum == len(tweets): ',original_len + retweet_len + reply_len == total_len)
+    
+    
+    
+def check_credibility(list_url, df):
+    list_credibility = []
+    for i in list_url:
+        for j in range(len(df["Domain"])):
+            if(i == df["Domain"][j]):
+                list_credibility.append((i,df["Class"][j]))
+    class_domain = []
+    for i in range(len(list_credibility)):
+        class_domain.append(list_credibility[i][1])
+    class_domain = pd.Series(class_domain).value_counts().sort_values()
+    labels = [class_domain.keys()[0], class_domain.keys()[1]]
+    values = [class_domain.high, class_domain.low]
+    fig1, ax1 = plt.subplots()
+    ax1.pie(values, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.show()
+    
+    
+    
+def remove_www(url_list):
+    urls_rt_beauty = []
+    for i in url_list:
+        value = i
+        if "www" in i:
+            splitted = i.split(".")
+            value = splitted[1] + "." + splitted[2]
+        urls_rt_beauty.append(value)
+    return urls_rt_beauty
