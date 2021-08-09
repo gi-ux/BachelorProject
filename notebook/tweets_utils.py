@@ -288,7 +288,7 @@ def check_credibility(list_url, df):
     fig1, ax1 = plt.subplots()
     ax1.pie(values, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    ax1.axis('equal')
     plt.show()
     
     
@@ -299,6 +299,9 @@ def remove_www(url_list):
         value = i
         if "www" in i:
             splitted = i.split(".")
-            value = splitted[1] + "." + splitted[2]
+            if(len(splitted) > 2):
+                value = splitted[1] + "." + splitted[2]
+            else:
+                value = splitted[1]
         urls_rt_beauty.append(value)
     return urls_rt_beauty
