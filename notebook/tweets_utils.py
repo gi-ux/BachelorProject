@@ -13,32 +13,7 @@ logger = logging.getLogger("main")
 workers = 7
 chunksize = int(1e6)
 
-def process_datetime(data):
-    if ((data == "nan") or (data == "False") or (data == "None")):
-        month = "01"
-        day = "01"
-        year = "2006"
-    else:
-        x = data.split()
-        month = str(time.strptime(x[1], '%b').tm_mon)
-        day = str(x[2])
-        year = str(x[5])
-    formatted_data = day + "-" + month + "-" + year
-    data = str(datetime.datetime.strptime(formatted_data, '%d-%m-%Y')).split()[0]
-    return data
-
-def found(name, list_name):
-    for i in list_name:
-        if(name == i):
-            return True
-    return False
-
-def url_decompress(url):
-        x = url.split()
-        url = x[3].translate({ord("'"): None})
-        url = url.split("//")
-        url = url[1].split("/")
-        return url[0]
+    ########################### process data tweets ###########################
 
 def process_data_tweets(df: pd.DataFrame):
 #     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
@@ -177,6 +152,41 @@ def process_data_disinformation(df: pd.DataFrame, lista):
         "d_reply_len": d_reply_len
     }
 
+def process_disinform_utils(df: pd.DataFrame, lista):
+    
+    created_at = []
+    coordinates = []            
+    name = []
+    lang = []
+    df = df.reset_index(drop=True)
+
+    res = 0
+    for i in df["user_screen_name"]:
+        if(found(i,lista)):
+            val = list(df["user_screen_name"]).index(i,res)
+            name.append(i)
+            coordinates.append(df["coordinates"][val])
+            created_at.append(df["created_at"][val])
+            lang.append(df["lang"][val])
+            res = val + 1
+    
+    res = 0
+    for i in df["rt_user_screen_name"]:
+        if(found(i,lista)):
+            val = list(df["rt_user_screen_name"]).index(i,res)
+            name.append(i)
+            coordinates.append(df["rt_coordinates"][val])
+            created_at.append(df["rt_created_at"][val])
+            lang.append(df["rt_lang"][val])
+            res = val + 1
+
+    return {
+        'data': created_at,
+        'name': name,
+        'coord': coordinates,
+        'lang': lang
+    }
+
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
     executor = ProcessPoolExecutor(max_workers=workers)
@@ -197,7 +207,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
             try:
                 if (flag == True):
 #                     futures.append(executor.submit(process_data_tweets, sc))
-                    futures.append(executor.submit(process_data_disinformation, sc, list_name))
+#                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
+                    futures.append(executor.submit(process_disinform_utils, sc, list_name))
                 else:
                     futures.append(executor.submit(process_data_users, sc))
 
@@ -217,7 +228,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
     results.append(partial_results)
     return results
 
-############################## Processed Data ##############################  
+ ############################## Utils ##############################  
 
 def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
     label = [name1, name2, name3]
@@ -290,7 +301,7 @@ def check_credibility(list_url, df):
             shadow=True, startangle=90)
     ax1.axis('equal')
     plt.show()
-    
+    return list_credibility
     
     
 def remove_www(url_list):
@@ -305,3 +316,31 @@ def remove_www(url_list):
                 value = splitted[1]
         urls_rt_beauty.append(value)
     return urls_rt_beauty
+
+
+def process_datetime(data):
+    if ((data == "nan") or (data == "False") or (data == "None")):
+        month = "01"
+        day = "01"
+        year = "2006"
+    else:
+        x = data.split()
+        month = str(time.strptime(x[1], '%b').tm_mon)
+        day = str(x[2])
+        year = str(x[5])
+    formatted_data = day + "-" + month + "-" + year
+    data = str(datetime.datetime.strptime(formatted_data, '%d-%m-%Y')).split()[0]
+    return data
+
+def found(name, list_name):
+    for i in list_name:
+        if(name == i):
+            return True
+    return False
+
+def url_decompress(url):
+        x = url.split()
+        url = x[3].translate({ord("'"): None})
+        url = url.split("//")
+        url = url[1].split("/")
+        return url[0]
