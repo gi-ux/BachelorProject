@@ -51,6 +51,10 @@ def process_data_users(df: pd.DataFrame):
             'verified': df["verified"]
             }
 
+def process_data_verified(df: pd.DataFrame, list_users):
+    df = df[df.user_screen_name.isin([x for x in list_users])]
+    return {'df': df}
+
 def process_data_disinformation(df: pd.DataFrame, lista):
     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
@@ -208,7 +212,9 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
                 if (flag == True):
 #                     futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
-                    futures.append(executor.submit(process_disinform_utils, sc, list_name))
+#                     futures.append(executor.submit(process_disinform_utils, sc, list_name))
+                    futures.append(executor.submit(process_data_verified, sc, list_name))
+
                 else:
                     futures.append(executor.submit(process_data_users, sc))
 
