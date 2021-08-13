@@ -63,7 +63,16 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     retweet = retweet.reset_index(drop=True)
     reply = reply.reset_index(drop=True)
     
-    id_tweet = [] 
+    id_tweet_original = [] 
+    hashtag_original = []
+    
+    id_tweet_rt = [] 
+    hashtag_rt = []
+    
+    id_tweet_rp = [] 
+    hashtag_rp = []
+
+    
     
     original_tweet = []
     original_id = []
@@ -75,10 +84,10 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     rt_name = []
     rt_id = []
     link_tweet = []
-#     disinform_replied_name = []
-#     disinform_replied_id = []
-#     rp_name = []
-#     rp_id = []
+    disinform_replied_name = []
+    disinform_replied_id = []
+    rp_name = []
+    rp_id = []
     
     res = 0
     d_total_len = 0
@@ -94,7 +103,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             original_tweet.append(i)
             original_id.append(original["user_id"][val])
             link.append(original["urls"][val])
-            id_tweet.append(original["id"][val])
+            id_tweet_original.append(original["id"][val])
+            hashtag_original.append(original["hashtags"][val])
             res = val + 1
             
     res = 0
@@ -108,8 +118,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             rt_id.append(retweet["user_id"][val])
             rt_name.append(retweet["user_screen_name"][val])
             link_tweet.append(retweet['urls'][val])
-            id_tweet.append(retweet["id"][val])
-
+            id_tweet_rt.append(retweet["id"][val])
+            hashtag_rt.append(retweet["hashtags"][val])
             res = val + 1
     res = 0
     for i in retweet["user_screen_name"]:
@@ -122,7 +132,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             rt_id.append(retweet["user_id"][val])
             rt_name.append(retweet["user_screen_name"][val])
             link_tweet.append(retweet['urls'][val])
-            id_tweet.append(retweet["id"][val])
+            id_tweet_rt.append(retweet["id"][val])
+            hashtag_rt.append(retweet["hashtags"][val])
             res = val + 1
     res = 0
     for i in reply['in_reply_to_screen_name']:
@@ -134,21 +145,27 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             disinform_replied_id.append(reply['in_reply_to_user_id'][val])
             rp_name.append(reply['user_screen_name'][val])
             rp_id.append(reply["user_id"][val])
-            id_tweet.append(reply["id"][val])
+            id_tweet_rp.append(reply["id"][val])
+            hashtag_rp.append(reply["hashtags"][val])
             res = val + 1
     return {
-        'id':id_tweet,
         #original
+        'id_original':id_tweet_original,
+        'hashtag_original':hashtag_original,
         "original_names":original_tweet,
         'original_ids': original_id,
         'links': link,        
         #retweet
+        "id_rt": id_tweet_rt,
+        "hashtag_rt": hashtag_rt,
         "retweet_ids": rt_id, 
         "retweet_users": rt_name,
         "retweeted_ids": disinform_rt_id, 
         "retweeted_users": disinform_rt_name,
         "rt_link" : link_tweet,
         #reply
+        "id_rp": id_tweet_rp,
+        "hashtag_rp": hashtag_rp,
         "reply_ids": rp_id, 
         "reply_users": rp_name,
         "replied_ids": disinform_replied_id, 
@@ -218,8 +235,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_data_tweets, sc))
-#                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
+#                     futures.append(executor.submit(process_data_tweets, sc))
+                    futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_disinform_utils, sc, list_name))
 #                     futures.append(executor.submit(process_data_verified, sc, list_name))
 
