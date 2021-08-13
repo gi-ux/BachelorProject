@@ -16,9 +16,9 @@ chunksize = int(1e6)
     ########################### process data tweets ###########################
 
 def process_data_tweets(df: pd.DataFrame):
-#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
+    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
-#     reply = df[df['in_reply_to_status_id'].notna()]
+    reply = df[df['in_reply_to_status_id'].notna()]
 #     tweet_creation = []
 #     for x in df['created_at']:
 #         data = (str(x))
@@ -28,11 +28,11 @@ def process_data_tweets(df: pd.DataFrame):
 #             "ids": df["user_id"], 
 #             "users": df["user_screen_name"],
 #             "original_ids": original["user_id"], 
-#             "original_users": original["user_screen_name"], 
+            "original_users": original["user_screen_name"], 
 #             "reply_ids": reply['user_id'], 
-#             "reply_users": reply['user_screen_name'],
+            "reply_users": reply['user_screen_name'],
 #             "replied_ids": reply['in_reply_to_user_id'], 
-#             "replied_users": reply['in_reply_to_screen_name'],
+            "replied_users": reply['in_reply_to_screen_name'],
 #             "retweet_ids": retweet["user_id"], 
             "retweet_users": retweet["user_screen_name"],
 #             "retweeted_ids": retweet['rt_user_id'], 
@@ -63,6 +63,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     retweet = retweet.reset_index(drop=True)
     reply = reply.reset_index(drop=True)
     
+    id_tweet = [] 
+    
     original_tweet = []
     original_id = []
     link = []
@@ -92,7 +94,9 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             original_tweet.append(i)
             original_id.append(original["user_id"][val])
             link.append(original["urls"][val])
+            id_tweet.append(original["id"][val])
             res = val + 1
+            
     res = 0
     for i in retweet["rt_user_screen_name"]:
         if(found(i,lista)):
@@ -104,6 +108,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             rt_id.append(retweet["user_id"][val])
             rt_name.append(retweet["user_screen_name"][val])
             link_tweet.append(retweet['urls'][val])
+            id_tweet.append(retweet["id"][val])
+
             res = val + 1
     res = 0
     for i in retweet["user_screen_name"]:
@@ -116,23 +122,25 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             rt_id.append(retweet["user_id"][val])
             rt_name.append(retweet["user_screen_name"][val])
             link_tweet.append(retweet['urls'][val])
+            id_tweet.append(retweet["id"][val])
             res = val + 1
-#     res = 0
-#     for i in reply['in_reply_to_screen_name']:
-#         if(found(i,lista)):
-#             d_total_len = d_total_len + 1
-#             d_reply_len = d_reply_len + 1
-#             val = list(reply['in_reply_to_screen_name']).index(i,res)
-#             disinform_replied_name.append(i)
-#             disinform_replied_id.append(reply['in_reply_to_user_id'][val])
-#             rp_name.append(reply['user_screen_name'][val])
-#             rp_id.append(reply["user_id"][val])
-#             res = val + 1
+    res = 0
+    for i in reply['in_reply_to_screen_name']:
+        if(found(i,lista)):
+            d_total_len = d_total_len + 1
+            d_reply_len = d_reply_len + 1
+            val = list(reply['in_reply_to_screen_name']).index(i,res)
+            disinform_replied_name.append(i)
+            disinform_replied_id.append(reply['in_reply_to_user_id'][val])
+            rp_name.append(reply['user_screen_name'][val])
+            rp_id.append(reply["user_id"][val])
+            id_tweet.append(reply["id"][val])
+            res = val + 1
     return {
+        'id':id_tweet,
         #original
         "original_names":original_tweet,
         'original_ids': original_id,
-#         'data': original["created_at"],
         'links': link,        
         #retweet
         "retweet_ids": rt_id, 
@@ -141,10 +149,10 @@ def process_data_disinformation(df: pd.DataFrame, lista):
         "retweeted_users": disinform_rt_name,
         "rt_link" : link_tweet,
         #reply
-#         "reply_ids": rp_id, 
-#         "reply_users": rp_name,
-#         "replied_ids": disinform_replied_id, 
-#         "replied_users": disinform_replied_name,
+        "reply_ids": rp_id, 
+        "reply_users": rp_name,
+        "replied_ids": disinform_replied_id, 
+        "replied_users": disinform_replied_name,
         #length
         "total_len" :len(df), 
         "original_len": len(original), 
@@ -210,10 +218,10 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                     futures.append(executor.submit(process_data_tweets, sc))
+                    futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_disinform_utils, sc, list_name))
-                    futures.append(executor.submit(process_data_verified, sc, list_name))
+#                     futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
                     futures.append(executor.submit(process_data_users, sc))
