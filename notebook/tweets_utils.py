@@ -65,29 +65,27 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     
     id_tweet_original = [] 
     hashtag_original = []
+    original_tweet = []
+    original_id = []
+    link = []
     
     id_tweet_rt = [] 
     hashtag_rt = []
     
     id_tweet_rp = [] 
     hashtag_rp = []
-
-    
-    
-    original_tweet = []
-    original_id = []
-    link = []
-#     created_at = []
     
     disinform_rt_name = []
     disinform_rt_id = []
     rt_name = []
     rt_id = []
     link_tweet = []
+    
     disinform_replied_name = []
     disinform_replied_id = []
     rp_name = []
     rp_id = []
+    link_rp = []
     
     res = 0
     d_total_len = 0
@@ -144,6 +142,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
             disinform_replied_name.append(i)
             disinform_replied_id.append(reply['in_reply_to_user_id'][val])
             rp_name.append(reply['user_screen_name'][val])
+            link_rp.append(retweet['urls'][val])
+
             rp_id.append(reply["user_id"][val])
             id_tweet_rp.append(reply["id"][val])
             hashtag_rp.append(reply["hashtags"][val])
@@ -168,6 +168,7 @@ def process_data_disinformation(df: pd.DataFrame, lista):
         "hashtag_rp": hashtag_rp,
         "reply_ids": rp_id, 
         "reply_users": rp_name,
+        "link_rp": link_rp,
         "replied_ids": disinform_replied_id, 
         "replied_users": disinform_replied_name,
         #length
