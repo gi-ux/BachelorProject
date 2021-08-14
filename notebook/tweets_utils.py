@@ -366,7 +366,7 @@ def process_datetime(data):
 
 def found(name, list_name):
     for i in list_name:
-        if(name == i):
+        if(name.lower() == i.lower()):
             return True
     return False
 
