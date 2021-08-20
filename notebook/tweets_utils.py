@@ -55,6 +55,12 @@ def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
     return {'df': df}
 
+def process_data_hashtags(df: pd.DataFrame):        
+    return {
+        'name': df["user_screen_name"],
+        'hashtags':df["hashtags"]
+           }
+
 def process_data_disinformation(df: pd.DataFrame, lista):
     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
     retweet = df[df['rt_created_at'].notna()]
@@ -182,40 +188,14 @@ def process_data_disinformation(df: pd.DataFrame, lista):
         "d_reply_len": d_reply_len
     }
 
-def process_disinform_utils(df: pd.DataFrame, lista):
-    
-    created_at = []
-    coordinates = []            
-    name = []
-    lang = []
-    df = df.reset_index(drop=True)
-
-    res = 0
-    for i in df["user_screen_name"]:
-        if(found(i,lista)):
-            val = list(df["user_screen_name"]).index(i,res)
-            name.append(i)
-            coordinates.append(df["coordinates"][val])
-            created_at.append(df["created_at"][val])
-            lang.append(df["lang"][val])
-            res = val + 1
-    
-    res = 0
-    for i in df["rt_user_screen_name"]:
-        if(found(i,lista)):
-            val = list(df["rt_user_screen_name"]).index(i,res)
-            name.append(i)
-            coordinates.append(df["rt_coordinates"][val])
-            created_at.append(df["rt_created_at"][val])
-            lang.append(df["rt_lang"][val])
-            res = val + 1
-
+def process_bots(df: pd.DataFrame, lista):
+    lista = list(lista)
+    df_user = df[df["user_screen_name"].isin(x for x in lista)]
+    df_rt = df[df["rt_user_screen_name"].isin(x for x in lista)]
     return {
-        'data': created_at,
-        'name': name,
-        'coord': coordinates,
-        'lang': lang
-    }
+        'df': df_user,
+        'df_rt': df_rt
+        }
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
@@ -237,8 +217,9 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
             try:
                 if (flag == True):
 #                     futures.append(executor.submit(process_data_tweets, sc))
-                    futures.append(executor.submit(process_data_disinformation, sc, list_name))
-#                     futures.append(executor.submit(process_disinform_utils, sc, list_name))
+#                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
+#                     futures.append(executor.submit(process_data_hashtags, sc))
+                    futures.append(executor.submit(process_bots, sc, list_name))
 #                     futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
@@ -262,6 +243,20 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
 
  ############################## Utils ##############################  
 
+def hashtag_normalize(i):
+    hashtag = []
+    if(i != "[]" ) and (not type(i) == float):
+        x = i.split(" ")
+        length = (len(x)) // 5
+        index = 0
+        for j in range(length):
+            index = index + 1
+            val = x[index].replace("'", "")
+            x_replace = val.replace(",", "")
+            hashtag.append(x_replace)
+            index = index + 4
+    return hashtag
+    
 def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
     label = [name1, name2, name3]
     data = [len1, len2, len3]
