@@ -192,9 +192,16 @@ def process_bots(df: pd.DataFrame, lista):
     lista = list(lista)
     df_user = df[df["user_screen_name"].isin(x for x in lista)]
     df_rt = df[df["rt_user_screen_name"].isin(x for x in lista)]
+    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
+    retweet = df[df['rt_created_at'].notna()]
+    reply = df[df['in_reply_to_status_id'].notna()]
     return {
         'df': df_user,
-        'df_rt': df_rt
+        'df_rt': df_rt,
+        'len_total':len(df),
+        'len_original':len(original),
+        'len_retweet':len(retweet),
+        'len_reply':len(reply)
         }
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
