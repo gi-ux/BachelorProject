@@ -378,3 +378,10 @@ def url_decompress(url):
         url = url.split("//")
         url = url[1].split("/")
         return url[0]
+    
+    
+def format_urls(urls):
+    urls = [url_decompress(v) if v != "[]" else "0" for v in urls]
+    urls = list(filter(lambda num: num != "0", urls))
+    urls = remove_www(urls)
+    return urls
