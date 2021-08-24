@@ -226,8 +226,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
 #                     futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
-                    futures.append(executor.submit(process_bots, sc, list_name))
-#                     futures.append(executor.submit(process_data_verified, sc, list_name))
+#                     futures.append(executor.submit(process_bots, sc, list_name))
+                    futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
                     futures.append(executor.submit(process_data_users, sc))
@@ -262,6 +262,21 @@ def hashtag_normalize(i):
             x_replace = val.replace(",", "")
             hashtag.append(x_replace)
             index = index + 4
+    return hashtag
+
+def hashtag_process(df):
+    hashtag = []
+    for i in df["hashtags"]:
+        if(i != "[]") and (not type(i) == float):
+            x = i.split(" ")
+            length = (len(x)) // 5
+            index = 0
+            for j in range(length):
+                index = index + 1
+                val = x[index].replace("'", "")
+                x_replace = val.replace(",", "")
+                hashtag.append(x_replace)
+                index = index + 4
     return hashtag
     
 def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):

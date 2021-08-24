@@ -1,0 +1,29 @@
+1 analisi
+	- contesto
+	- fruitori
+	- analisi dei dati
+	- analii delle tecnologie
+	- requisiti
+		- contenuti
+		- funzionalità
+		- rispetto per la privacy
+	- obiettivi
+2 studio delle soluzioni
+	- stato dell'arte
+	- scelte implementative
+	- ambienti di sviluppo
+		....
+	- linguaggio di programmazione usato
+		....
+		librerie
+	- strumenti utilizzati
+3 implementazione
+		...
+	- esempi di grafici
+4 operazioni sui dati
+5 piani di lavoro
+	- github
+6 conclusoni
+	- problemi riscontrati
+	- implementazioni future
+7 fonti
