@@ -278,6 +278,21 @@ def hashtag_process(df):
                 hashtag.append(x_replace)
                 index = index + 4
     return hashtag
+
+def hashtag_process_list(list_hashtag):
+    hashtag = []
+    for i in list_hashtag:
+        if(i != "[]") and (not type(i) == float):
+            x = i.split(" ")
+            length = (len(x)) // 5
+            index = 0
+            for j in range(length):
+                index = index + 1
+                val = x[index].replace("'", "")
+                x_replace = val.replace(",", "")
+                hashtag.append(x_replace)
+                index = index + 4
+    return hashtag
     
 def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
     label = [name1, name2, name3]
@@ -357,7 +372,9 @@ def remove_www(url_list):
     urls_rt_beauty = []
     for i in url_list:
         value = i
-        if "www" in i:
+        if value is None:
+            continue
+        elif "www" in i:
             splitted = i.split(".")
             if(len(splitted) > 2):
                 value = splitted[1] + "." + splitted[2]
@@ -388,12 +405,13 @@ def found(name, list_name):
     return False
 
 def url_decompress(url):
+    if isinstance(url, float) == False:
         x = url.split()
         url = x[3].translate({ord("'"): None})
         url = url.split("//")
         url = url[1].split("/")
         return url[0]
-    
+
     
 def format_urls(urls):
     urls = [url_decompress(v) if v != "[]" else "0" for v in urls]
