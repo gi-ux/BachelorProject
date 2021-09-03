@@ -223,11 +223,11 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                     futures.append(executor.submit(process_data_tweets, sc))
+                    futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
-                    futures.append(executor.submit(process_data_verified, sc, list_name))
+#                     futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
                     futures.append(executor.submit(process_data_users, sc))

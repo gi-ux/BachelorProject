@@ -1,29 +1,42 @@
 1 analisi
 	- contesto
 	- fruitori
-	- analisi dei dati
-	- analii delle tecnologie
 	- requisiti
 		- contenuti
 		- funzionalità
 		- rispetto per la privacy
 	- obiettivi
-2 studio delle soluzioni
-	- stato dell'arte
+
+2 stato dell'arte
+	- situazione attuale
+	- analisi dei dati
 	- scelte implementative
-	- ambienti di sviluppo
-		....
-	- linguaggio di programmazione usato
-		....
-		librerie
+	- linguaggio di programmazione e ambiente
+		- librerie
 	- strumenti utilizzati
+		- botometer
+		- mediabiasfactcheck
+		- twitter api
+
 3 implementazione
-		...
-	- esempi di grafici
-4 operazioni sui dati
-5 piani di lavoro
+	- studio delle soluzioni
+	- familiarizzare con i dati
+	- parallelizzazione
+	- score con botometer
+		- file "to be scored"
+		- score ottenuti
+	- Studio dei disinformation Dozen
+	- Disinformation Dozen - Verified users
+	- Confronto tra Dozen (Bad e Good)
+	- retweet network
+	- i dozen nella retweet network
+
+4 piani di lavoro
+	- rapporti settimanali
 	- github
-6 conclusoni
+
+5 conclusoni
+	- risultati
 	- problemi riscontrati
 	- implementazioni future
-7 fonti
+6 fonti
