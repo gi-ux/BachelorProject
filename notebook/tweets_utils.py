@@ -16,9 +16,9 @@ chunksize = int(1e6)
     ########################### process data tweets ###########################
 
 def process_data_tweets(df: pd.DataFrame):
-    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
-    retweet = df[df['rt_created_at'].notna()]
-    reply = df[df['in_reply_to_status_id'].notna()]
+#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
+#     retweet = df[df['rt_created_at'].notna()]
+#     reply = df[df['in_reply_to_status_id'].notna()]
 #     tweet_creation = []
 #     for x in df['created_at']:
 #         data = (str(x))
@@ -37,11 +37,11 @@ def process_data_tweets(df: pd.DataFrame):
 #             "retweet_users": retweet["user_screen_name"],
 #             "retweeted_ids": retweet['rt_user_id'], 
 #             "retweeted_users": retweet['rt_user_screen_name'],
-            "total_len" :len(df), 
-            "original_len": len(original), 
-            "retweet_len": len(retweet), 
-            "reply_len": len(reply)
-#             "creation": tweet_creation
+#             "total_len" :len(df), 
+#             "original_len": len(original), 
+#             "retweet_len": len(retweet), 
+#             "reply_len": len(reply)
+            "creation": df["created_at"]
     }
 
 def process_data_users(df: pd.DataFrame):

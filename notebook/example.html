@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "DrDenaGrayson", "label": "DrDenaGrayson", "shape": "dot", "size": 10}, {"id": "kakape", "label": "kakape", "shape": "dot", "size": 10}, {"id": "mlipsitch", "label": "mlipsitch", "shape": "dot", "size": 10}, {"id": "DrEricDing", "label": "DrEricDing", "shape": "dot", "size": 10}, {"id": "HelenBranswell", "label": "HelenBranswell", "shape": "dot", "size": 10}, {"id": "IlonaKickbusch", "label": "IlonaKickbusch", "shape": "dot", "size": 10}, {"id": "MackayIM", "label": "MackayIM", "shape": "dot", "size": 10}, {"id": "DrTedros", "label": "DrTedros", "shape": "dot", "size": 10}, {"id": "trvrb", "label": "trvrb", "shape": "dot", "size": 10}, {"id": "ashishkjha", "label": "ashishkjha", "shape": "dot", "size": 10}, {"id": "edyong209", "label": "edyong209", "shape": "dot", "size": 10}, {"id": "CDCDirector", "label": "CDCDirector", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "DrDenaGrayson", "to": "kakape", "weight": 1}, {"from": "DrDenaGrayson", "to": "mlipsitch", "weight": 1}, {"from": "DrDenaGrayson", "to": "DrEricDing", "weight": 1}, {"from": "DrDenaGrayson", "to": "HelenBranswell", "weight": 1}, {"from": "DrDenaGrayson", "to": "IlonaKickbusch", "weight": 1}, {"from": "DrDenaGrayson", "to": "MackayIM", "weight": 1}, {"from": "DrDenaGrayson", "to": "DrTedros", "weight": 1}, {"from": "kakape", "to": "trvrb", "weight": 1}, {"from": "kakape", "to": "DrTedros", "weight": 1}, {"from": "kakape", "to": "ashishkjha", "weight": 1}, {"from": "kakape", "to": "kakape", "weight": 1}, {"from": "kakape", "to": "edyong209", "weight": 1}, {"from": "MackayIM", "to": "edyong209", "weight": 1}, {"from": "MackayIM", "to": "DrTedros", "weight": 1}, {"from": "MackayIM", "to": "CDCDirector", "weight": 1}, {"from": "MackayIM", "to": "HelenBranswell", "weight": 1}, {"from": "MackayIM", "to": "IlonaKickbusch", "weight": 1}, {"from": "edyong209", "to": "mlipsitch", "weight": 1}, {"from": "edyong209", "to": "trvrb", "weight": 1}, {"from": "edyong209", "to": "DrTedros", "weight": 1}, {"from": "edyong209", "to": "ashishkjha", "weight": 1}, {"from": "edyong209", "to": "DrEricDing", "weight": 1}, {"from": "DrEricDing", "to": "DrEricDing", "weight": 1}, {"from": "DrEricDing", "to": "trvrb", "weight": 1}, {"from": "DrEricDing", "to": "CDCDirector", "weight": 1}, {"from": "DrEricDing", "to": "mlipsitch", "weight": 1}, {"from": "IlonaKickbusch", "to": "HelenBranswell", "weight": 1}, {"from": "IlonaKickbusch", "to": "mlipsitch", "weight": 1}, {"from": "IlonaKickbusch", "to": "CDCDirector", "weight": 1}, {"from": "IlonaKickbusch", "to": "trvrb", "weight": 1}, {"from": "IlonaKickbusch", "to": "IlonaKickbusch", "weight": 1}, {"from": "HelenBranswell", "to": "ashishkjha", "weight": 1}, {"from": "HelenBranswell", "to": "CDCDirector", "weight": 1}, {"from": "HelenBranswell", "to": "HelenBranswell", "weight": 1}, {"from": "ashishkjha", "to": "DrTedros", "weight": 1}, {"from": "ashishkjha", "to": "CDCDirector", "weight": 1}, {"from": "ashishkjha", "to": "trvrb", "weight": 1}, {"from": "DrTedros", "to": "trvrb", "weight": 1}, {"from": "mlipsitch", "to": "trvrb", "weight": 1}, {"from": "mlipsitch", "to": "mlipsitch", "weight": 1}, {"from": "mlipsitch", "to": "CDCDirector", "weight": 1}, {"from": "CDCDirector", "to": "CDCDirector", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
