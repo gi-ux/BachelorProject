@@ -418,3 +418,19 @@ def format_urls(urls):
     urls = list(filter(lambda num: num != "0", urls))
     urls = remove_www(urls)
     return urls
+
+
+def clean_data_format(df: pd.DataFrame, fix_encoding=False, broken_col='text'):
+    col = df.columns[-1]
+
+    def clean(target):
+        return str(target).replace("\r", "")
+
+    if "\r" in col:
+        clean_col = clean(col)
+        df = df.rename(columns={col: clean_col})
+        if df[clean_col].dtype.name == 'object':
+            df[clean_col] = df[clean_col].apply(clean)
+    if fix_encoding:
+        df[broken_col] = df[broken_col].apply(util.fix_encoding)
+    return df
