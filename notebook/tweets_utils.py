@@ -15,7 +15,7 @@ chunksize = int(1e6)
 
     ########################### process data tweets ###########################
 
-def process_data_tweets(df: pd.DataFrame):
+def process_data_tweets(df: pd.DataFrame, list_users):
 #     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
 #     retweet = df[df['rt_created_at'].notna()]
 #     reply = df[df['in_reply_to_status_id'].notna()]
@@ -24,9 +24,13 @@ def process_data_tweets(df: pd.DataFrame):
 #         data = (str(x))
 #         formatted = process_datetime(data)
 #         tweet_creation.append(datetime.datetime.strptime(formatted, '%d-%m-%Y'))
+    df = df[df.user_screen_name.isin([x for x in list_users])]
     return {
 #             "ids": df["user_id"], 
-#             "users": df["user_screen_name"],
+            "users": df["user_screen_name"],
+            "hashtags":df["hashtags"],
+            "urls":df["urls"],
+            "text":df["text"],
 #             "original_ids": original["user_id"], 
 #             "original_users": original["user_screen_name"], 
 #             "reply_ids": reply['user_id'], 
@@ -41,7 +45,7 @@ def process_data_tweets(df: pd.DataFrame):
 #             "original_len": len(original), 
 #             "retweet_len": len(retweet), 
 #             "reply_len": len(reply)
-            "creation": df["created_at"]
+            "created_at": df["created_at"]
     }
 
 def process_data_users(df: pd.DataFrame):
@@ -223,7 +227,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_data_tweets, sc))
+                    futures.append(executor.submit(process_data_tweets, sc, list_name))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
