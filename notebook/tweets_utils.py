@@ -28,9 +28,9 @@ def process_data_tweets(df: pd.DataFrame, list_users):
     return {
 #             "ids": df["user_id"], 
             "users": df["user_screen_name"],
-            "hashtags":df["hashtags"],
-            "urls":df["urls"],
-            "text":df["text"],
+#             "hashtags":df["hashtags"],
+#             "urls":df["urls"],
+#             "text":df["text"],
 #             "original_ids": original["user_id"], 
 #             "original_users": original["user_screen_name"], 
 #             "reply_ids": reply['user_id'], 
@@ -45,7 +45,7 @@ def process_data_tweets(df: pd.DataFrame, list_users):
 #             "original_len": len(original), 
 #             "retweet_len": len(retweet), 
 #             "reply_len": len(reply)
-            "created_at": df["created_at"]
+#             "created_at": df["created_at"]
     }
 
 def process_data_users(df: pd.DataFrame):
@@ -58,6 +58,12 @@ def process_data_users(df: pd.DataFrame):
 def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
     return {'df': df}
+
+
+def process_data_verified_profiles(df: pd.DataFrame, list_users):
+    df = df[df.screen_name.isin([x for x in list_users])]
+    return {'df': df}
+
 
 def process_data_hashtags(df: pd.DataFrame):        
     return {
@@ -227,14 +233,16 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_data_tweets, sc, list_name))
+#                     futures.append(executor.submit(process_data_tweets, sc, list_name))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
-#                     futures.append(executor.submit(process_data_verified, sc, list_name))
+                    futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
-                    futures.append(executor.submit(process_data_users, sc))
+#                     futures.append(executor.submit(process_data_users, sc))
+                    futures.append(executor.submit(process_data_verified_profiles, sc, list_name))
+
 
             except Exception as e:
                 logger.exception("Error", e)
