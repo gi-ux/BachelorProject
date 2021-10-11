@@ -14,7 +14,17 @@ workers = 7
 chunksize = int(1e6)
 
     ########################### process data tweets ###########################
-
+def process_quotes(df: pd.DataFrame):
+#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna() & df['quoted_status_created_at'].isna()]
+#     quotes = df[df['quoted_status_created_at'].isna()]
+    retweet = df[df['rt_created_at'].notna()]
+    retweet_checksum = len(retweet[retweet["quoted_status_created_at"].notna()])
+#     reply = df[df['in_reply_to_status_id'].notna()]
+    return {
+            "rt_len" : len(retweet),
+            "quotes_rt_len" : retweet_checksum
+    }
+    
 def process_data_tweets(df: pd.DataFrame, list_users):
 #     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
 #     retweet = df[df['rt_created_at'].notna()]
@@ -233,11 +243,12 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
+                      futures.append(executor.submit(process_quotes, sc))
 #                     futures.append(executor.submit(process_data_tweets, sc, list_name))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
-                    futures.append(executor.submit(process_data_verified, sc, list_name))
+#                     futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))

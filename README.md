@@ -28,19 +28,37 @@ To have a better management of the project, different folders have been created:
 - csv folder contains miscellaneous .csv files used
 Some folders are kept offline for size and privacy reasons.
 
-### Privacy
+## Privacy
 
 Since the data in question is public information on an open platform that can be viewed even without registering with Twitter, there are no privacy-related issues in sharing it. However, the information that was considered confidential was kept offline.
 
-### Data Collection
+## Data Collection
 
 Data are collected through an existing repository (https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done.
 
-### External Tools
+## External Tools
 
-#### MediaBias Fact Check ####
+#### Media Bias/Fact Check
+
 For the study of veracity of a shared domain a factchecking tool was used that allows to give a "credibility" score.
 Through this score it was possible to obtain a list of domains with high credibility and others with low credibility, distinguishing authoritative and non-authoritative sources.
-More info on mediabiasfactcheck.com.
 
- 
+More info on https://mediabiasfactcheck.com/.
+
+
+#### Botometer
+
+Since during the project there was an interest in collecting information about potential bots in the discussion, a tool was used to give a score from 1 to 0 that represents the probability that a user is a bot or not.
+
+The tool can be accessed through the website (more information at https://botometer.osome.iu.edu/) or through a special API.
+
+More information is available on the GitHub repository of Botometer: https://github.com/IUNetSci/botometer-python
+
+## Partial Results
+
+Through this study it was possible to classify users according to their position within the discussion from Covid-19 on Twitter. 
+
+It was possible to identify the main actors of misinformation and the corresponding actors of good information, obtaining valuable information on shared domains, information strategies and hashtags used.
+It was possible to identify the bots in play, going to give an interesting classification of these and identify them in the discussion, they are in fact mainly engaged in information sharing operations without particular interest in influencing the discussion.
+
+Starting with this information, it is possible to be able to identify and act against actions that lead to the propagation and proliferation of fake news of any kind related to the Covid-19 discussion. This would give the possibility to improve the quality of information in circulation, thus limiting the visibility that incorrect users have. All this can also play an important role on the health of citizens who use social networks to inform themselves.
