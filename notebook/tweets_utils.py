@@ -34,10 +34,14 @@ def process_data_tweets(df: pd.DataFrame, list_users):
 #         data = (str(x))
 #         formatted = process_datetime(data)
 #         tweet_creation.append(datetime.datetime.strptime(formatted, '%d-%m-%Y'))
-    df = df[df.user_screen_name.isin([x for x in list_users])]
+    df = df[df.user_screen_name.isin([x for x in list_users]) | 
+            df.in_reply_to_screen_name.isin([x for x in list_users]) |
+            df.rt_user_screen_name.isin([x for x in list_users])]
+    
     return {
+        "df":df
 #             "ids": df["user_id"], 
-            "users": df["user_screen_name"],
+#             "users": df["user_screen_name"],
 #             "hashtags":df["hashtags"],
 #             "urls":df["urls"],
 #             "text":df["text"],
@@ -243,8 +247,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                      futures.append(executor.submit(process_quotes, sc))
-#                     futures.append(executor.submit(process_data_tweets, sc, list_name))
+#                       futures.append(executor.submit(process_quotes, sc))
+                    futures.append(executor.submit(process_data_tweets, sc, list_name))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
@@ -431,10 +435,17 @@ def url_decompress(url):
     if isinstance(url, float) == False:
         x = url.split()
         url = x[3].translate({ord("'"): None})
+#         url = check_compression(url, df)
         url = url.split("//")
         url = url[1].split("/")
         return url[0]
 
+# def check_compression(value, df):
+#     if value in list(df["url"]):
+#         print("trasform")
+#         return df[df["url"]==value]["expanded"][0]
+#     else:
+#         return value
     
 def format_urls(urls):
     urls = [url_decompress(v) if v != "[]" else "0" for v in urls]
