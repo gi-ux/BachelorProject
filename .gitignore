@@ -134,3 +134,4 @@ notebook/config.json
 large_files/*
 network/*
 json_scored/*
+id_finder/*
