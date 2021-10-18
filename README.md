@@ -34,7 +34,7 @@ Since the data in question is public information on an open platform that can be
 
 ## Data Collection
 
-Data are collected through an existing repository (https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done.
+Data are collected through an [existing repository](#https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done).
 
 ## External Tools
 
@@ -50,9 +50,9 @@ More info on https://mediabiasfactcheck.com/.
 
 Since during the project there was an interest in collecting information about potential bots in the discussion, a tool was used to give a score from 1 to 0 that represents the probability that a user is a bot or not.
 
-The tool can be accessed through the website (more information at https://botometer.osome.iu.edu/) or through a special API.
+The tool can be accessed through the [website](#https://botometer.osome.iu.edu/) or through a special API.
 
-More information is available on the GitHub repository of Botometer: https://github.com/IUNetSci/botometer-python
+More information is available on the [GitHub repository of Botometer](#https://github.com/IUNetSci/botometer-python).
 
 ## Partial Results
 
