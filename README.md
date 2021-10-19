@@ -27,6 +27,7 @@ To have a better management of the project, different folders have been created:
 - doc folder contains information regarding the progress and implementation of the project, this folder also houses reports for the project display.
 - csv folder contains miscellaneous .csv files used
 Some folders are kept offline for size and privacy reasons.
+- sage folder contains the Python implementation of the SAGE project (found in External Tools > SAGE), modified and updated for use in this project.
 
 ## Privacy
 
