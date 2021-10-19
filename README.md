@@ -34,7 +34,7 @@ Since the data in question is public information on an open platform that can be
 
 ## Data Collection
 
-Data are collected through an [existing repository](https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done).
+Data are collected through an [existing repository](https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done.
 
 ## External Tools
 
@@ -53,6 +53,13 @@ Since during the project there was an interest in collecting information about p
 The tool can be accessed through the [website](https://botometer.osome.iu.edu/) or through a special API.
 
 More information is available on the [GitHub repository of Botometer](https://github.com/IUNetSci/botometer-python).
+
+#### SAGE
+
+Sparse Additive Generative Models of Text is a project made by Jacob Eisenstein, Amr Ahmed and Eric P. Xing at the 
+School of Computer Science, Carnegie Mellon University, in Pittsburgh (USA).
+
+The project, available on the [GitHub repository](https://github.com/jacobeisenstein/SAGE), makes it possible to study the content of tweets, analysing the number of words according to a metric described in the [following paper](http://www.icml-2011.org/papers/534_icmlpaper.pdf).
 
 ## Partial Results
 
