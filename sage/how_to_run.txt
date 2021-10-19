@@ -1,0 +1,8 @@
+python runSage.py "convote-132-*" --max_vocab_size 1000 --base_rate_smoothing=1. --num_keywords=5
+
+Arguments:
+
+"convote-132-* This specifies a file glob to analyze.
+--max_vocab_size 1000 This indicates that SAGE will consider only the 1000 most frequent words.
+--base_rate_smoothing=1. This smooths the baseline language model. Lower values will cause SAGE to emphasize more rare words; higher values will cause it emphasize more frequent words.
+--num_keywords=5 This is the number of keywords to output.

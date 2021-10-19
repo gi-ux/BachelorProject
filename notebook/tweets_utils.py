@@ -25,7 +25,7 @@ def process_quotes(df: pd.DataFrame):
             "quotes_rt_len" : retweet_checksum
     }
     
-def process_data_tweets(df: pd.DataFrame, list_users):
+def process_data_tweets(df: pd.DataFrame):
 #     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
 #     retweet = df[df['rt_created_at'].notna()]
 #     reply = df[df['in_reply_to_status_id'].notna()]
@@ -33,13 +33,15 @@ def process_data_tweets(df: pd.DataFrame, list_users):
 #     for x in df['created_at']:
 #         data = (str(x))
 #         formatted = process_datetime(data)
-#         tweet_creation.append(datetime.datetime.strptime(formatted, '%d-%m-%Y'))
-    df = df[df.user_screen_name.isin([x for x in list_users]) | 
-            df.in_reply_to_screen_name.isin([x for x in list_users]) |
-            df.rt_user_screen_name.isin([x for x in list_users])]
+#         tweet_creation.append(datetime.datetime.strptime(formatted, '%d-%m-%Y')
+
+#     df = df[df.user_screen_name.isin([x for x in list_users]) | 
+#             df.in_reply_to_screen_name.isin([x for x in list_users]) |
+#             df.rt_user_screen_name.isin([x for x in list_users])]
+    df = df[df["text"].notna()]
     
     return {
-        "df":df
+        "text":df["text"]
 #             "ids": df["user_id"], 
 #             "users": df["user_screen_name"],
 #             "hashtags":df["hashtags"],
@@ -213,20 +215,8 @@ def process_data_disinformation(df: pd.DataFrame, lista):
     }
 
 def process_bots(df: pd.DataFrame, lista):
-    lista = list(lista)
-    df_user = df[df["user_screen_name"].isin(x for x in lista)]
-    df_rt = df[df["rt_user_screen_name"].isin(x for x in lista)]
-    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
-    retweet = df[df['rt_created_at'].notna()]
-    reply = df[df['in_reply_to_status_id'].notna()]
-    return {
-        'df': df_user,
-        'df_rt': df_rt,
-        'len_total':len(df),
-        'len_original':len(original),
-        'len_retweet':len(retweet),
-        'len_reply':len(reply)
-        }
+    df = df[df.user_screen_name.isin([x for x in lista])]
+    return {'df': df}
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
@@ -247,8 +237,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                       futures.append(executor.submit(process_quotes, sc))
-                    futures.append(executor.submit(process_data_tweets, sc, list_name))
+#                     futures.append(executor.submit(process_quotes, sc))
+                    futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
