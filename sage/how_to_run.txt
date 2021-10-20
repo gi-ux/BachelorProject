@@ -1,8 +1,10 @@
-python runSage.py "convote-132-*" --max_vocab_size 1000 --base_rate_smoothing=1. --num_keywords=5
+python runSage.py "filename" --generate <bool_value> --filename "output_filename" --max_vocab_size <int_value> --base_rate_smoothing=<float_value> --num_keywords=<int_value>
 
 Arguments:
 
-"convote-132-* This specifies a file glob to analyze.
---max_vocab_size 1000 This indicates that SAGE will consider only the 1000 most frequent words.
---base_rate_smoothing=1. This smooths the baseline language model. Lower values will cause SAGE to emphasize more rare words; higher values will cause it emphasize more frequent words.
---num_keywords=5 This is the number of keywords to output.
+"filename" -> This specifies a file glob to analyze.
+--generate <bool_value> -> This is a flag that is False by default, if True a .csv will be write.
+--filename "output_filename" -> This is the name of the file if the previous flag is True.
+--max_vocab_size <int_value>  -> This indicates that SAGE will consider only the 1000 most frequent words, if value = 0 all words are considered
+--base_rate_smoothing=<float_value> -> This smooths the baseline language model. Lower values will cause SAGE to emphasize more rare words; higher values will cause it emphasize more frequent words.
+--num_keywords=<int_value> -> This is the number of keywords to output.

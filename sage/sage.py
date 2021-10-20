@@ -58,5 +58,8 @@ def makeCountVec(counts,vocab):
     return vec
 
 def topK(beta,vocab,K=10):
-    return [vocab[idx] for idx in (-beta).argsort()[:K]]
+    if K==0:
+        return [vocab[idx] for idx in (-beta).argsort()]
+    else:
+        return [vocab[idx] for idx in (-beta).argsort()[:K]]
     
