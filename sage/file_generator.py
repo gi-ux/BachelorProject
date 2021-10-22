@@ -11,8 +11,8 @@ def main():
     parser = argparse.ArgumentParser(description='run file_generator on ONE file to write .csv file for notebook')
     parser.add_argument('files', type=str,
                         help="This should be a glob of text files, each representing a subset of your corpus.")
-    parser.add_argument('--filename', type=str, default="input",
-                        help="This is the name of .csv file, if not specified is 'input'.")
+    parser.add_argument('--outfilename', type=str, default="input",
+                        help="This is the name of .csv file, if not specified is 'output'.")
     args = parser.parse_args()
     filenames = sorted(glob(args.files))
     vocab_filenames = [name for name in filenames]
@@ -20,7 +20,7 @@ def main():
         print("You only need to pass ONE file and output filename.")
     else:
         etas, vect, x, X_base = runSage.run(args.files, 0, 1.)
-        runSage.write_file(etas, vect, x, args.filename)
+        runSage.write_file(etas, vect, x, args.outfilename)
 
 
 if __name__ == '__main__':

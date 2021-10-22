@@ -6,12 +6,12 @@ there are two ways of executing the script:
 
 1) Generate a .csv file containing word,word_count to be used in the notebook:
 
-<pre><code> python file_generator.py "filename" --filename "output_filename"</code></pre>
+<pre><code> python file_generator.py "filename" --outfilename "output_filename"</code></pre>
 
 ### Params for .csv generator
 
 - **filename**: this specifies the file to generate output file
-- **--filename**: this is the name of the output file
+- **--outfilename**: this is the name of the output file
 
 2) Run the SAGE script to get information about multiple files specified as input:
 
