@@ -7,6 +7,7 @@ import deltaIterator as di
 #sage.estimate(l.ecounts[:,0:1],eq_m)
 #sage.fLogNormalAux(numpy.zeros([W,1]),l.ecounts[:,0:1],numpy.exp(eq_m).reshape(W,1),numpy.ones([W,1]))
 
+
 def estimate(ecounts,eq_m,max_its=25):
     if len(ecounts.shape)==1:
         ecounts = reshape(ecounts,(-1,1))
@@ -29,13 +30,15 @@ def estimate(ecounts,eq_m,max_its=25):
         it.update(eta)
     return(eta)
 
+
 def fLogNormalAux(eta,ecounts,exp_eq_m,eq_inv_tau):
     C = ecounts.sum(axis=0)
     [W,K] = ecounts.shape
     denom = tile(exp(eta),(K,1)).dot(exp_eq_m.T)
     out = -(eta.T.dot(ecounts).sum(axis=0) - C * log(denom.sum(axis=0)) - 0.5 * eq_inv_tau.T.dot(eta ** 2))
     return(out[0])
-           
+
+
 def gLogNormalAux(eta,ecounts,exp_eq_m,eq_inv_tau):
     C = ecounts.sum(axis=0)
     [W,K] = ecounts.shape
@@ -45,17 +48,20 @@ def gLogNormalAux(eta,ecounts,exp_eq_m,eq_inv_tau):
     g = -(ecounts.sum(axis=1) - beta.dot(C) - eq_inv_tau * eta)
     return(g)
 
+
 # utility
 def makeVocab(counts,min_count):
     N = sum([x > min_count for x in counts.values()])
     vocab = [word for word,count in counts.most_common(N)] #use vocab.index() to get the index of a word
     return vocab    
 
+
 def makeCountVec(counts,vocab):    
     vec = zeros(len(vocab))
     for i,word in enumerate(vocab):
         vec[i] = counts[word]
     return vec
+
 
 def topK(beta,vocab,K=10):
     if K==0:

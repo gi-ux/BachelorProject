@@ -90,3 +90,31 @@ def printEtaCSV(etas, vect, x, X_base, num_keywords=25):
                              'base_count': X_base[idx],
                              'base_rate': X_base[idx] / float(X_base.sum())
                              })
+
+
+def clean_data_format(df: pd.DataFrame, fix_encoding=False, broken_col='text'):
+    col = df.columns[-1]
+
+    def clean(target):
+        return str(target).replace("\r", "")
+
+    if "\r" in col:
+        clean_col = clean(col)
+        df = df.rename(columns={col: clean_col})
+        if df[clean_col].dtype.name == 'object':
+            df[clean_col] = df[clean_col].apply(clean)
+    if fix_encoding:
+        df[broken_col] = df[broken_col].apply(fix_encoding)
+    return df
+
+
+def fix_encoding(in_str: str):
+    try:
+        if in_str.startswith('b'):
+            in_str = in_str[2:-1]
+            in_str = in_str.encode().decode('unicode_escape').replace('\n', '')
+            return in_str.encode('LATIN-1').decode('utf-8')
+    except Exception:
+        in_str = str(in_str)
+    return in_str
+
