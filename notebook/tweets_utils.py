@@ -238,11 +238,11 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
             try:
                 if (flag == True):
 #                     futures.append(executor.submit(process_quotes, sc))
-                    futures.append(executor.submit(process_data_tweets, sc))
+#                     futures.append(executor.submit(process_data_tweets, sc))
 #                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
 #                     futures.append(executor.submit(process_data_hashtags, sc))
 #                     futures.append(executor.submit(process_bots, sc, list_name))
-#                     futures.append(executor.submit(process_data_verified, sc, list_name))
+                    futures.append(executor.submit(process_data_verified, sc, list_name))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
@@ -311,13 +311,13 @@ def hashtag_process_list(list_hashtag):
                 index = index + 4
     return hashtag
     
-def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
-    label = [name1, name2, name3]
-    data = [len1, len2, len3]
-    explode = (0.1, 0.1, 0.1)
+def print_pie_chart4(title, name1, name2, name3, name4, len1, len2, len3, len4):
+    label = [name1, name2, name3, name4]
+    data = [len1, len2, len3, len4]
+    explode = (0.1, 0.1, 0.1, 0.1)
 
     # Creating color parameters
-    colors = ( "lightgreen", "orange", "cyan")
+    colors = ( "lightgreen", "orange", "cyan", "grey")
 
     # Wedge properties
     wp = { 'linewidth' : 1, 'edgecolor' : "black" }
@@ -348,20 +348,23 @@ def print_pie_chart3(title, name1, name2, name3, len1, len2, len3):
     ax.set_title(title)
     plt.show()
     
-def stats(total_len, original_len, retweet_len, reply_len):
+def stats(total_len, original_len, retweet_len, reply_len, quote_len):
     print(f'Number of total tweets: {total_len}')
     print(f'Number of original tweets: {original_len}')
-    print(f'Number of retweet: {retweet_len}')
-    print(f'Number of reply: {reply_len}')
+    print(f'Number of retweets: {retweet_len}')
+    print(f'Number of replies: {reply_len}')
+    print(f'Number of quotes: {quote_len}')
 
     perc_original = np.around(original_len*100/total_len,2)
     perc_retweet = np.around(retweet_len*100/total_len,2)
     perc_reply = np.around(reply_len*100/total_len,2)
+    perc_quote = np.around(quote_len*100/total_len,2)
     print(f'Number of original_tweets: {perc_original}% of total tweets')
     print(f'Number of retweets: {perc_retweet}% of total tweets')
     print(f'Number of replies: {perc_reply}% of total tweets')
+    print(f'Number of quotes: {perc_quote}% of total tweets')
 
-    print('Check sum == len(tweets): ',original_len + retweet_len + reply_len == total_len)
+    print('Check sum == len(tweets): ',original_len + retweet_len + reply_len + quote_len == total_len)
     
     
     
@@ -458,3 +461,7 @@ def clean_data_format(df: pd.DataFrame, fix_encoding=False, broken_col='text'):
     if fix_encoding:
         df[broken_col] = df[broken_col].apply(util.fix_encoding)
     return df
+
+
+def print_perc(value_1, value_2):
+    print(f"{round(value_1/value_2,2)*100}%")

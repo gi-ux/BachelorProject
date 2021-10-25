@@ -38,6 +38,7 @@ def write_file(df: pd.DataFrame, name: str):
     text_file = open(f"{name}.txt", "w", encoding="utf-8")
     for i in df["text"]:
         content = re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', '', i)
+        content = ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", content).split())
         content = re.sub('[^a-zA-Z0-9\s]', '', content)
         content = content.lower()
         content = clean_cached(content)
