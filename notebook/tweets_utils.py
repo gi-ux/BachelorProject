@@ -464,4 +464,47 @@ def clean_data_format(df: pd.DataFrame, fix_encoding=False, broken_col='text'):
 
 
 def print_perc(value_1, value_2):
-    print(f"{round(value_1/value_2,2)*100}%")
+    return (round(value_1/value_2,2)*100)
+
+
+def split_df(df: pd.DataFrame):
+    ### Original tweets
+    original = df[df["in_reply_to_screen_name"].isna() & df["rt_created_at"].isna() & df["quoted_status_id"].isna()]
+    nan_value = float("NaN")
+    original_w_mentions = original.replace("[]", nan_value)
+    original_w_mentions = original_w_mentions[original_w_mentions["user_mentions"].notna()]
+    
+    ### Replies
+    reply = df[df["in_reply_to_user_id"].notna() & df["quoted_status_id"].isna()]
+    mentions = reply[reply["in_reply_to_status_id"].isna()]
+    original = original.append(mentions)
+    original_w_mentions = original_w_mentions.append(mentions)
+    reply = reply.drop(mentions.index)
+    reply_to_status = reply[reply["in_reply_to_status_id"].notna()]
+    
+    ### Retweets
+    retweet = df[df["rt_created_at"].notna()]
+    retweet_original = retweet[retweet["rt_in_reply_to_user_id"].isna() & retweet["quoted_status_id"].isna()]
+    retweet_in_reply = retweet[retweet["rt_in_reply_to_status_id"].notna()]
+    retweet_of_mentions = retweet[retweet["rt_in_reply_to_status_id"].isna() & retweet["rt_in_reply_to_user_id"].notna()]
+    
+    ### Quotes
+    quote = df[df["quoted_status_id"].notna() & df["rt_created_at"].isna()]
+    quote_original = quote[quote["in_reply_to_screen_name"].isna()]
+    quote_reply = quote[quote["in_reply_to_screen_name"].notna() & quote["in_reply_to_status_id_str"].notna()]
+    quote_mention = quote[quote["in_reply_to_status_id"].isna() & quote["in_reply_to_user_id"].notna()] 
+ 
+    return {
+        'original':original,
+        'original_mention':original_w_mentions,
+        'reply':reply,
+        'reply_to_status':reply_to_status,
+        'retweet':retweet,
+        'rt_original':retweet_original,
+        'rt_in_reply':retweet_in_reply,
+        'rt_mention':retweet_of_mentions,
+        'quote':quote,
+        'quote_original':quote_original,
+        'quote_reply':quote_reply,
+        'quote_mention':quote_mention
+    }
