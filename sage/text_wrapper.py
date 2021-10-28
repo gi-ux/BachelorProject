@@ -1,45 +1,29 @@
 import pandas as pd
 import glob
 import re
+from tqdm import tqdm
 from nltk.corpus import stopwords
-import runSage
+import argparse
 
-path = glob.glob("C:/Users/gianl/Desktop/Gi/Supsi/BachelorProject/large_files/ccdh/")[0]
 path_names = glob.glob("C:/Users/gianl/Desktop/Gi/Supsi/BachelorProject/csv/")[0]
 cachedStopWords = stopwords.words("english")
-good = pd.read_csv(path_names + "all_good_users.csv", lineterminator="\n", low_memory=False)
-bad = pd.read_csv(path_names + "disinformation_users.csv", lineterminator="\n", low_memory=False)
-words_custom = pd.read_csv(path_names + "words_to_remove.csv", lineterminator="\n", low_memory=False)
-good = runSage.clean_data_format(good)
-bad = runSage.clean_data_format(bad)
-dozen_names = list(good["screen_name"])
-dozen_names.extend(list(bad["screen_name"]))
-dozen_names.extend(list(words_custom["word"]))
-dozen_names = [item.lower() for item in dozen_names]
-print(len(dozen_names))
+custom_words = list(pd.read_csv(path_names + "words_to_remove.csv",
+                                lineterminator="\n", low_memory=False)["word"])
 
 
 def clean_cached(text):
     text = ' '.join([word for word in text.split() if word not in cachedStopWords])
-    text = ' '.join([word for word in text.split() if word not in dozen_names])
+    text = ' '.join([word for word in text.split() if word not in custom_words])
     return text
-
-
-# def clean_stop_words(text):
-#     text_tokens = word_tokenize(text)
-#     string = ""
-#     for word in text_tokens:
-#         if word not in stopwords.words():
-#             string += word + " "
-#     return string
 
 
 def write_file(df: pd.DataFrame, name: str):
     text_file = open(f"{name}.txt", "w", encoding="utf-8")
-    for i in df["text"]:
+    # for i in df["text"]:
+    for i in tqdm(df["text"]):
         content = re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', '', i)
-        content = ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", content).split())
-        content = re.sub('[^a-zA-Z0-9\s]', '', content)
+        content = ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)|[^a-zA-Z0-9\s]",
+                                  " ", content).split())
         content = content.lower()
         content = clean_cached(content)
         text_file.write(content + "\n")
@@ -47,13 +31,25 @@ def write_file(df: pd.DataFrame, name: str):
 
 
 def main():
-    cols = ["text", "user_screen_name"]
-    df_good = pd.read_csv(path + "good_dozen.csv", lineterminator="\n", low_memory=False, usecols=cols)
-    write_file(df_good, "data/good")
-    print("Good Done...")
-    df_bad = pd.read_csv(path + "ccdh_tweets.csv", lineterminator="\n", low_memory=False, usecols=cols)
-    write_file(df_bad, "data/bad")
-    print("Bad Done...")
+    parser = argparse.ArgumentParser(description='run text_wrapper to clean DF field and turn it into .txt file')
+    parser.add_argument('input_filename', type=str,
+                        help="This should be the input file.")
+    parser.add_argument('--output_filename', type=str, default="input",
+                        help="This is the name of .txt file, if not specified is 'output'.")
+    args = parser.parse_args()
+    filenames = sorted(glob.glob(args.input_filename))
+    files = [name for name in filenames]
+    if len(files) != 1:
+        print("You only need to pass ONE file and output filename.")
+    else:
+        cols = ["text"]
+        print("Start processing...")
+        print("Reading input file...")
+        df = pd.read_csv(args.input_filename, lineterminator="\n", low_memory=False, usecols=cols)
+        print("Done!")
+        print("Cleaning input file...")
+        write_file(df, "data/" + args.output_filename)
+        print("Done!")
 
     # lst = ["rashid", "kellybroganmd", "buttar", "drtedros", "ashishkjha", "unhealthytruth", "brogan", "mercola",
     #        "drmikeryan", "edyong209", "mlipsitch", "helenbranswell"]

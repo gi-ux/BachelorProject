@@ -73,7 +73,10 @@ def process_data_users(df: pd.DataFrame):
 
 def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
-    return {'df': df}
+    return {
+#         'df': df
+        'text': df["text"]
+           }
 
 
 def process_data_verified_profiles(df: pd.DataFrame, list_users):

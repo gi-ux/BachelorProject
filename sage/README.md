@@ -1,8 +1,18 @@
 # SAGE 
 
+### Clear file
+
+Before execute SAGE is strongly recommended cleaning the file of characters, mentions and links.
+
+To do this, a scrip has been created that can take a dataframe and clean a specified field ("text" in our case).
+
+The script will then create a .txt file in the "data" folder with a specified name. 
+
+<pre><code> python text_wrapper.py "input_filename.csv" --output_file "output_filename" </code></pre>
+
 ### How to run
 
-there are two ways of executing the script:
+There are two ways of executing the script:
 
 1) Generate a .csv file containing word,word_count to be used in the notebook:
 
