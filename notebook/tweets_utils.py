@@ -5,9 +5,11 @@ from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import wait as futures_wait
 import numpy as np
 import pandas as pd
-import tqdm
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.graph_objects as go
+
 
 logger = logging.getLogger("main")
 workers = 7
@@ -74,8 +76,8 @@ def process_data_users(df: pd.DataFrame):
 def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
     return {
-#         'df': df
-        'text': df["text"]
+        'df': df
+#         'text': df["text"]
            }
 
 
@@ -429,13 +431,29 @@ def found(name, list_name):
 
 def url_decompress(url):
     if isinstance(url, float) == False:
-        x = url.split()
-        url = x[3].translate({ord("'"): None})
+#         x = url.split()
+#         url = x[3].translate({ord("'"): None})
 #         url = check_compression(url, df)
         url = url.split("//")
-        url = url[1].split("/")
-        return url[0]
+        if (url[0] is None) | (url[0] == "None"):
+            print("invalid data")
+        else:
+            url = url[1].split("/")
+            return url[0]
 
+def substitute_compressed_url(df, expanded_urls):
+    df_urls = df.loc[df['urls'] != '[]']
+    df_urls["urls"] = [x.split()[3].translate({ord("'"): None}).replace(",","") for x in df_urls["urls"]]
+    df_merge = df_urls.merge(expanded_urls, how="left", left_on="urls", right_on="url")
+    x = df_merge[df_merge["url"].notna()]
+    for index, row in x.iterrows():
+        df_urls.loc[df_urls["urls"]==row["url"], "urls"] = row["expanded"]
+    print("Beautify...")
+    urls = df_urls["urls"]
+    urls = [tweets_utils.url_decompress(v) for v in urls]
+    urls = tweets_utils.remove_www(urls)
+    return urls
+        
 # def check_compression(value, df):
 #     if value in list(df["url"]):
 #         print("trasform")
@@ -511,3 +529,14 @@ def split_df(df: pd.DataFrame):
         'quote_reply':quote_reply,
         'quote_mention':quote_mention
     }
+
+def plt_hist(name1, name2, value1, value2, labels, xaxis, yaxis, title):
+    fig = go.Figure()
+    fig.add_trace(go.Histogram(histfunc="sum", y=value1, x=labels, name=name1))
+    fig.add_trace(go.Histogram(histfunc="sum", y=value2, x=labels, name=name2))
+    fig.update_layout(
+        title=title,
+        xaxis_title=xaxis,
+        yaxis_title=yaxis,
+        legend_title="Legend")
+    fig.show()

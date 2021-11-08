@@ -17,7 +17,7 @@ def clean_cached(text):
     return text
 
 
-def write_file(df: pd.DataFrame, name: str):
+def write_file_text(df: pd.DataFrame, name: str):
     text_file = open(f"{name}.txt", "w", encoding="utf-8")
     # for i in df["text"]:
     for i in tqdm(df["text"]):
@@ -30,12 +30,25 @@ def write_file(df: pd.DataFrame, name: str):
     text_file.close()
 
 
+def write_file_hashtag(df: pd.DataFrame, name: str):
+    text_file = open(f"{name}.txt", "w", encoding="utf-8")
+    hashtag = []
+    for i in tqdm(df["text"]):
+        hashtag.extend(re.findall(r'\B#\w*[a-zA-Z]+\w*', i))
+
+    for i in hashtag:
+        text_file.write(i + "\n")
+    text_file.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description='run text_wrapper to clean DF field and turn it into .txt file')
     parser.add_argument('input_filename', type=str,
                         help="This should be the input file.")
     parser.add_argument('--output_filename', type=str, default="input",
                         help="This is the name of .txt file, if not specified is 'output'.")
+    parser.add_argument('--hashtags', type=bool, default=False,
+                        help="This is a flag for scanning hashtags.")
     args = parser.parse_args()
     filenames = sorted(glob.glob(args.input_filename))
     files = [name for name in filenames]
@@ -48,7 +61,12 @@ def main():
         df = pd.read_csv(args.input_filename, lineterminator="\n", low_memory=False, usecols=cols)
         print("Done!")
         print("Cleaning input file...")
-        write_file(df, "data/" + args.output_filename)
+        if args.hashtags:
+            print("Writing hashtag file...")
+            write_file_hashtag(df, "data/" + args.output_filename)
+        else:
+            print("Writing text file...")
+            write_file_text(df, "data/" + args.output_filename)
         print("Done!")
 
     # lst = ["rashid", "kellybroganmd", "buttar", "drtedros", "ashishkjha", "unhealthytruth", "brogan", "mercola",

@@ -18,7 +18,6 @@ def main():
     parser.add_argument('--num_keywords', type=int, default=25,
                         help="Number of words shown on screen, not required with --generate True")
     args = parser.parse_args()
-
     etas, vect, x, X_base = runSage.run(args.files, args.max_vocab_size, args.base_rate_smoothing)
     runSage.printEtaCSV(etas, vect, x, X_base, num_keywords=args.num_keywords)
 

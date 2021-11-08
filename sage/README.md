@@ -8,7 +8,7 @@ To do this, a scrip has been created that can take a dataframe and clean a speci
 
 The script will then create a .txt file in the "data" folder with a specified name. 
 
-<pre><code> python text_wrapper.py "input_filename.csv" --output_file "output_filename" </code></pre>
+<pre><code> python text_wrapper.py "input_filename.csv" --output_file "output_filename" --hashtags bool_value </code></pre>
 
 ### How to run
 
