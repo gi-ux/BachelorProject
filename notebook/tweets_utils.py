@@ -28,42 +28,10 @@ def process_quotes(df: pd.DataFrame):
     }
     
 def process_data_tweets(df: pd.DataFrame):
-#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
-#     retweet = df[df['rt_created_at'].notna()]
-#     reply = df[df['in_reply_to_status_id'].notna()]
-#     tweet_creation = []
-#     for x in df['created_at']:
-#         data = (str(x))
-#         formatted = process_datetime(data)
-#         tweet_creation.append(datetime.datetime.strptime(formatted, '%d-%m-%Y')
-
-#     df = df[df.user_screen_name.isin([x for x in list_users]) | 
-#             df.in_reply_to_screen_name.isin([x for x in list_users]) |
-#             df.rt_user_screen_name.isin([x for x in list_users])]
     df = df[df["text"].notna()]
     
     return {
         "text":df["text"]
-#             "ids": df["user_id"], 
-#             "users": df["user_screen_name"],
-#             "hashtags":df["hashtags"],
-#             "urls":df["urls"],
-#             "text":df["text"],
-#             "original_ids": original["user_id"], 
-#             "original_users": original["user_screen_name"], 
-#             "reply_ids": reply['user_id'], 
-#             "reply_users": reply['user_screen_name'],
-#             "replied_ids": reply['in_reply_to_user_id'], 
-#             "replied_users": reply['in_reply_to_screen_name'],
-#             "retweet_ids": retweet["user_id"], 
-#             "retweet_users": retweet["user_screen_name"],
-#             "retweeted_ids": retweet['rt_user_id'], 
-#             "retweeted_users": retweet['rt_user_screen_name'],
-#             "total_len" :len(df), 
-#             "original_len": len(original), 
-#             "retweet_len": len(retweet), 
-#             "reply_len": len(reply)
-#             "created_at": df["created_at"]
     }
 
 def process_data_users(df: pd.DataFrame):
@@ -77,7 +45,6 @@ def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
     return {
         'df': df
-#         'text': df["text"]
            }
 
 
@@ -91,137 +58,8 @@ def process_data_hashtags(df: pd.DataFrame):
         'name': df["user_screen_name"],
         'hashtags':df["hashtags"]
            }
-
-def process_data_disinformation(df: pd.DataFrame, lista):
-    original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna()]
-    retweet = df[df['rt_created_at'].notna()]
-    reply = df[df['in_reply_to_status_id'].notna()]
-    original = original.reset_index(drop=True)
-    retweet = retweet.reset_index(drop=True)
-    reply = reply.reset_index(drop=True)
-    
-    id_tweet_original = [] 
-    hashtag_original = []
-    original_tweet = []
-    original_id = []
-    link = []
-    
-    id_tweet_rt = [] 
-    hashtag_rt = []
-    
-    id_tweet_rp = [] 
-    hashtag_rp = []
-    
-    disinform_rt_name = []
-    disinform_rt_id = []
-    rt_name = []
-    rt_id = []
-    link_tweet = []
-    
-    disinform_replied_name = []
-    disinform_replied_id = []
-    rp_name = []
-    rp_id = []
-    link_rp = []
-    
-    res = 0
-    d_total_len = 0
-    d_original_len = 0
-    d_retweet_len = 0
-    d_reply_len = 0
-    
-    for i in original["user_screen_name"]:
-        if(found(i,lista)):
-            d_total_len = d_total_len + 1
-            d_original_len = d_original_len + 1
-            val = list(original["user_screen_name"]).index(i,res)
-            original_tweet.append(i)
-            original_id.append(original["user_id"][val])
-            link.append(original["urls"][val])
-            id_tweet_original.append(original["id"][val])
-            hashtag_original.append(original["hashtags"][val])
-            res = val + 1
-            
-    res = 0
-    for i in retweet["rt_user_screen_name"]:
-        if(found(i,lista)):
-            d_total_len = d_total_len + 1
-            d_retweet_len = d_retweet_len + 1
-            val = list(retweet["rt_user_screen_name"]).index(i,res)
-            disinform_rt_name.append(i)
-            disinform_rt_id.append(retweet["rt_user_id"][val])
-            rt_id.append(retweet["user_id"][val])
-            rt_name.append(retweet["user_screen_name"][val])
-            link_tweet.append(retweet['urls'][val])
-            id_tweet_rt.append(retweet["id"][val])
-            hashtag_rt.append(retweet["hashtags"][val])
-            res = val + 1
-    res = 0
-    for i in retweet["user_screen_name"]:
-        if(found(i,lista)):
-            d_total_len = d_total_len + 1
-            d_retweet_len = d_retweet_len + 1
-            val = list(retweet["user_screen_name"]).index(i,res)
-            disinform_rt_name.append(i)
-            disinform_rt_id.append(retweet["rt_user_id"][val])
-            rt_id.append(retweet["user_id"][val])
-            rt_name.append(retweet["user_screen_name"][val])
-            link_tweet.append(retweet['urls'][val])
-            id_tweet_rt.append(retweet["id"][val])
-            hashtag_rt.append(retweet["hashtags"][val])
-            res = val + 1
-    res = 0
-    for i in reply['in_reply_to_screen_name']:
-        if(found(i,lista)):
-            d_total_len = d_total_len + 1
-            d_reply_len = d_reply_len + 1
-            val = list(reply['in_reply_to_screen_name']).index(i,res)
-            disinform_replied_name.append(i)
-            disinform_replied_id.append(reply['in_reply_to_user_id'][val])
-            rp_name.append(reply['user_screen_name'][val])
-            link_rp.append(retweet['urls'][val])
-
-            rp_id.append(reply["user_id"][val])
-            id_tweet_rp.append(reply["id"][val])
-            hashtag_rp.append(reply["hashtags"][val])
-            res = val + 1
-    return {
-        #original
-        'id_original':id_tweet_original,
-        'hashtag_original':hashtag_original,
-        "original_names":original_tweet,
-        'original_ids': original_id,
-        'links': link,        
-        #retweet
-        "id_rt": id_tweet_rt,
-        "hashtag_rt": hashtag_rt,
-        "retweet_ids": rt_id, 
-        "retweet_users": rt_name,
-        "retweeted_ids": disinform_rt_id, 
-        "retweeted_users": disinform_rt_name,
-        "rt_link" : link_tweet,
-        #reply
-        "id_rp": id_tweet_rp,
-        "hashtag_rp": hashtag_rp,
-        "reply_ids": rp_id, 
-        "reply_users": rp_name,
-        "link_rp": link_rp,
-        "replied_ids": disinform_replied_id, 
-        "replied_users": disinform_replied_name,
-        #length
-        "total_len" :len(df), 
-        "original_len": len(original), 
-        "retweet_len": len(retweet), 
-        "reply_len": len(reply),
-        "d_total_len" :d_total_len, 
-        "d_original_len": d_original_len, 
-        "d_retweet_len": d_retweet_len, 
-        "d_reply_len": d_reply_len
-    }
-
-def process_bots(df: pd.DataFrame, lista):
-    df = df[df.user_screen_name.isin([x for x in lista])]
-    return {'df': df}
+def process_data_get_names(df: pd.DataFrame):
+    return {"df": df}
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
@@ -242,12 +80,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                     futures.append(executor.submit(process_quotes, sc))
-#                     futures.append(executor.submit(process_data_tweets, sc))
-#                     futures.append(executor.submit(process_data_disinformation, sc, list_name))
-#                     futures.append(executor.submit(process_data_hashtags, sc))
-#                     futures.append(executor.submit(process_bots, sc, list_name))
-                    futures.append(executor.submit(process_data_verified, sc, list_name))
+                    futures.append(executor.submit(process_data_get_names, sc))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
@@ -438,6 +271,7 @@ def url_decompress(url):
         if (url[0] is None) | (url[0] == "None"):
             print("invalid data")
         else:
+            print(url)
             url = url[1].split("/")
             return url[0]
 

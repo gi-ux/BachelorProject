@@ -6,6 +6,9 @@ from glob import glob
 import csv
 import sys
 import importlib
+from nltk.corpus import stopwords
+
+german_stop_words = stopwords.words('german')
 
 importlib.reload(sage)
 
@@ -20,11 +23,11 @@ def getData(filenames):
 def run(filenames, max_vocab_size=10000, smoothing=1.):
     if max_vocab_size == 0:
         print("Calculation of the occurrence of each word ...")
-        vect = CountVectorizer()
+        vect = CountVectorizer(stop_words=german_stop_words)
 
     else:
         print(f"Calculation of the occurrence of {max_vocab_size} words ... ")
-        vect = CountVectorizer(max_features=max_vocab_size)
+        vect = CountVectorizer(max_features=max_vocab_size, stop_words=german_stop_words)
 
     filenames = sorted(glob(filenames))
     vocab_filenames = [name for name in filenames]
@@ -69,13 +72,20 @@ def write_file(etas, vect, x, outfile_name):
 
 
 def printEtaCSV(etas, vect, x, X_base, num_keywords=25):
-    writer = csv.DictWriter(sys.stdout, fieldnames=[  # 'source',
-        'word',
-        'sage',
-        'base_count',
-        'base_rate',
-        'file_count',
-        'file_rate'],
+    lst_source = []
+    lst_word = []
+    lst_sage = []
+    lst_base_count = []
+    lst_base_rate = []
+    lst_file_count = []
+    lst_file_rate = []
+    writer = csv.DictWriter(sys.stdout, fieldnames=['source',
+                                                    'word',
+                                                    'sage',
+                                                    'base_count',
+                                                    'base_rate',
+                                                    'file_count',
+                                                    'file_rate'],
                             delimiter='\t'
                             )
     writer.writeheader()
@@ -83,14 +93,28 @@ def printEtaCSV(etas, vect, x, X_base, num_keywords=25):
     for filename, eta in etas.items():
         for word in sage.topK(eta, vocab, num_keywords):
             idx = vect.vocabulary_[word]
-            writer.writerow({  # 'source': filename,
-                'word': word,
-                'sage': eta[idx],
-                'file_count': x[filename][idx],
-                'file_rate': x[filename][idx] / float(x[filename].sum()),
-                'base_count': X_base[idx],
-                'base_rate': X_base[idx] / float(X_base.sum())
-            })
+            writer.writerow({'source': filename,
+                             'word': word,
+                             'sage': eta[idx],
+                             'file_count': x[filename][idx],
+                             'file_rate': x[filename][idx] / float(x[filename].sum()),
+                             'base_count': X_base[idx],
+                             'base_rate': X_base[idx] / float(X_base.sum())
+                             })
+            lst_source.append(filename)
+            lst_word.append(word)
+            lst_sage.append(eta[idx])
+            lst_file_count.append(x[filename][idx])
+            lst_file_rate.append(x[filename][idx] / float(x[filename].sum()))
+            lst_base_count.append(X_base[idx])
+            lst_base_rate.append(X_base[idx] / float(X_base.sum()))
+
+    print("Writing file ...")
+    df = pd.DataFrame(list(zip(lst_source, lst_word, lst_sage, lst_file_count, lst_file_rate,
+                               lst_base_count, lst_base_rate)),
+                      columns=["source", "word", "sage", "file_count", "file_rate", "base_count", "base_rate"])
+    df.to_csv(f"data/outfile.csv", index=False, encoding="utf-8")
+    print("Done !")
 
 
 def clean_data_format(df: pd.DataFrame, fix_encoding=False, broken_col='text'):

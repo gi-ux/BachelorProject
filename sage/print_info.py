@@ -1,3 +1,4 @@
+import time
 import sage
 import argparse
 import importlib
@@ -18,8 +19,11 @@ def main():
     parser.add_argument('--num_keywords', type=int, default=25,
                         help="Number of words shown on screen, not required with --generate True")
     args = parser.parse_args()
+    start_time = time.perf_counter()
     etas, vect, x, X_base = runSage.run(args.files, args.max_vocab_size, args.base_rate_smoothing)
     runSage.printEtaCSV(etas, vect, x, X_base, num_keywords=args.num_keywords)
+    stop_time = time.perf_counter()
+    print("Time: ", stop_time-start_time)
 
 
 if __name__ == '__main__':
