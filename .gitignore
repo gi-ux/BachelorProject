@@ -137,7 +137,7 @@ network/*
 
 json_scored/*
 
-id_finder/auth
+id_finder/auth.json
 id_finder/data/*
 
 sage/data/*
