@@ -113,7 +113,7 @@ def printEtaCSV(etas, vect, x, X_base, num_keywords=25):
     df = pd.DataFrame(list(zip(lst_source, lst_word, lst_sage, lst_file_count, lst_file_rate,
                                lst_base_count, lst_base_rate)),
                       columns=["source", "word", "sage", "file_count", "file_rate", "base_count", "base_rate"])
-    df.to_csv(f"data/outfile.csv", index=False, encoding="utf-8")
+    df.to_csv(f"data/outfile.csv", index=False, encoding="utf-8", line_terminator="\n")
     print("Done !")
 
 

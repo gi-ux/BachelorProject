@@ -132,8 +132,13 @@ to_be_scored/*.csv
 notebook/config.json
 
 large_files/*
+
 network/*
+
 json_scored/*
-id_finder/*
+
+id_finder/auth
+id_finder/data/*
+
 sage/data/*
 sage/.idea

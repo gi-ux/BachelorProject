@@ -9,6 +9,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+import json
 
 
 logger = logging.getLogger("main")
@@ -27,6 +28,7 @@ def process_quotes(df: pd.DataFrame):
             "quotes_rt_len" : retweet_checksum
     }
     
+    
 def process_data_tweets(df: pd.DataFrame):
     df = df[df["text"].notna()]
     
@@ -34,12 +36,14 @@ def process_data_tweets(df: pd.DataFrame):
         "text":df["text"]
     }
 
+
 def process_data_users(df: pd.DataFrame):
     return {
             'users': df['screen_name'], 
             'ids': df['id'],
             'verified': df["verified"]
             }
+
 
 def process_data_verified(df: pd.DataFrame, list_users):
     df = df[df.user_screen_name.isin([x for x in list_users])]
@@ -58,8 +62,11 @@ def process_data_hashtags(df: pd.DataFrame):
         'name': df["user_screen_name"],
         'hashtags':df["hashtags"]
            }
+
+
 def process_data_get_names(df: pd.DataFrame):
     return {"df": df}
+
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
@@ -119,6 +126,7 @@ def hashtag_normalize(i):
             index = index + 4
     return hashtag
 
+
 def hashtag_process(df):
     hashtag = []
     for i in df["hashtags"]:
@@ -134,6 +142,7 @@ def hashtag_process(df):
                 index = index + 4
     return hashtag
 
+
 def hashtag_process_list(list_hashtag):
     hashtag = []
     for i in list_hashtag:
@@ -148,6 +157,7 @@ def hashtag_process_list(list_hashtag):
                 hashtag.append(x_replace)
                 index = index + 4
     return hashtag
+   
     
 def print_pie_chart4(title, name1, name2, name3, name4, len1, len2, len3, len4):
     label = [name1, name2, name3, name4]
@@ -186,6 +196,7 @@ def print_pie_chart4(title, name1, name2, name3, name4, len1, len2, len3, len4):
     ax.set_title(title)
     plt.show()
     
+    
 def stats(total_len, original_len, retweet_len, reply_len, quote_len):
     print(f'Number of total tweets: {total_len}')
     print(f'Number of original tweets: {original_len}')
@@ -203,7 +214,6 @@ def stats(total_len, original_len, retweet_len, reply_len, quote_len):
     print(f'Number of quotes: {perc_quote}% of total tweets')
 
     print('Check sum == len(tweets): ',original_len + retweet_len + reply_len + quote_len == total_len)
-    
     
     
 def check_credibility(list_url, df):
@@ -256,11 +266,13 @@ def process_datetime(data):
     data = str(datetime.datetime.strptime(formatted_data, '%d-%m-%Y')).split()[0]
     return data
 
+
 def found(name, list_name):
     for i in list_name:
         if(name.lower() == i.lower()):
             return True
     return False
+
 
 def url_decompress(url):
     if isinstance(url, float) == False:
@@ -268,13 +280,14 @@ def url_decompress(url):
 #         url = x[3].translate({ord("'"): None})
 #         url = check_compression(url, df)
         url = url.split("//")
-        if (url[0] is None) | (url[0] == "None"):
+        if (url[0] is None) | (url[0] == "None") | (url[0] == '/') | ("http" not in url[0]):
             print("invalid data")
         else:
             print(url)
             url = url[1].split("/")
             return url[0]
 
+        
 def substitute_compressed_url(df, expanded_urls):
     df_urls = df.loc[df['urls'] != '[]']
     df_urls["urls"] = [x.split()[3].translate({ord("'"): None}).replace(",","") for x in df_urls["urls"]]
@@ -286,15 +299,9 @@ def substitute_compressed_url(df, expanded_urls):
     urls = df_urls["urls"]
     urls = [tweets_utils.url_decompress(v) for v in urls]
     urls = tweets_utils.remove_www(urls)
-    return urls
-        
-# def check_compression(value, df):
-#     if value in list(df["url"]):
-#         print("trasform")
-#         return df[df["url"]==value]["expanded"][0]
-#     else:
-#         return value
+    return urls  
     
+
 def format_urls(urls):
     urls = [url_decompress(v) if v != "[]" else "0" for v in urls]
     urls = list(filter(lambda num: num != "0", urls))
@@ -364,6 +371,7 @@ def split_df(df: pd.DataFrame):
         'quote_mention':quote_mention
     }
 
+
 def plt_hist(name1, name2, value1, value2, labels, xaxis, yaxis, title):
     fig = go.Figure()
     fig.add_trace(go.Histogram(histfunc="sum", y=value1, x=labels, name=name1))
@@ -374,3 +382,13 @@ def plt_hist(name1, name2, value1, value2, labels, xaxis, yaxis, title):
         yaxis_title=yaxis,
         legend_title="Legend")
     fig.show()
+    
+    
+def read_from_json(path):
+    start_time = time.perf_counter()
+    file = open (path, encoding = "utf-8")
+    obj = json.loads(file.read())
+    file.close()
+    stop_time = time.perf_counter()
+    print("Time: ",stop_time-start_time)
+    return obj

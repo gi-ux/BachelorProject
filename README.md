@@ -70,3 +70,9 @@ It was possible to identify the main actors of misinformation and the correspond
 It was possible to identify the bots in play, going to give an interesting classification of these and identify them in the discussion, they are in fact mainly engaged in information sharing operations without particular interest in influencing the discussion.
 
 Starting with this information, it is possible to be able to identify and act against actions that lead to the propagation and proliferation of fake news of any kind related to the Covid-19 discussion. This would give the possibility to improve the quality of information in circulation, thus limiting the visibility that incorrect users have. All this can also play an important role on the health of citizens who use social networks to inform themselves.
+
+## In Progress
+
+The project is still ongoing, all Notebooks are constantly updated with new studies.
+
+New analyses are underway using existing projects (such as SAGE and avaxtar) and data collection is continuing.
