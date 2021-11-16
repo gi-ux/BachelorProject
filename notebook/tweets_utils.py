@@ -52,8 +52,7 @@ def process_data_verified(df: pd.DataFrame, list_users):
            }
 
 
-def process_data_verified_profiles(df: pd.DataFrame, list_users):
-    df = df[df.screen_name.isin([x for x in list_users])]
+def process_data_verified_profiles(df: pd.DataFrame):
     return {'df': df}
 
 
@@ -91,7 +90,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
-                    futures.append(executor.submit(process_data_verified_profiles, sc, list_name))
+                    futures.append(executor.submit(process_data_verified_profiles, sc))
 
 
             except Exception as e:
@@ -111,7 +110,19 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
     return results
 
  ############################## Utils ##############################  
-
+def plot_distribution(df: pd.DataFrame, title, column_name, xmin=0, xmax=1):
+    index = [10, 90]
+    box = list(df[column_name])
+    perc_numpy = [np.percentile(box, i, interpolation='nearest') for i in index]
+    # # Plotting
+    plt.hist(box, 50)
+    for i in range(len(index)):
+        plt.axvline(perc_numpy[i], color='r')
+    plt.title(title)
+    plt.xlim(xmin=xmin, xmax=xmax)
+    plt.show()
+    
+    
 def hashtag_normalize(i):
     hashtag = []
     if(i != "[]" ) and (not type(i) == float):
