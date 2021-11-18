@@ -395,3 +395,28 @@ def read_from_json(path):
     stop_time = time.perf_counter()
     print("Time: ",stop_time-start_time)
     return obj
+
+def plot_two_hist(s1: pd.Series, s2: pd.Series, name):
+    good_lst_val = list(s1.values)
+    good_lst_com = list(s1.keys())
+    good_lst = []
+    [good_lst.append("good") for i in good_lst_com]
+    bad_lst_val = list(s2.values)
+    bad_lst_com = list(s2.keys())
+    bad_lst = []
+    [bad_lst.append("bad") for i in bad_lst_com]
+    df_plot = pd.DataFrame(list(zip(good_lst_val, good_lst_com, good_lst)), 
+                           columns=["Val", "Community", "Dozen"])
+    df_plot = df_plot.append(pd.DataFrame(list(zip(bad_lst_val, bad_lst_com, bad_lst)), 
+                           columns=["Val", "Community", "Dozen"]))
+    df_plot = df_plot.sort_values(by="Val", ascending=False)
+    df_plot["Community"] = df_plot["Community"].astype(str)
+    fig = px.bar(df_plot, x="Val", y="Community", color="Dozen", barmode='group', 
+                 title=name, orientation="h",  color_discrete_map={
+        'good': 'blue',
+        'bd': 'green'})
+    fig.update_layout(
+    font_size = 18,
+    yaxis = dict(autorange="reversed")
+    )
+    fig.show()
