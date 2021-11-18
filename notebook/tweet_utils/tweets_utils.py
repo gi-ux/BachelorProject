@@ -31,24 +31,16 @@ def process_quotes(df: pd.DataFrame):
     
 def process_data_tweets(df: pd.DataFrame):
     df = df[df["text"].notna()]
-    
     return {
         "text":df["text"]
     }
 
 
-def process_data_users(df: pd.DataFrame):
+def process_data_rt(df: pd.DataFrame, list_users):
+    df = df[df["rt_created_at"].notna()]
+    df = df[df.rt_user_screen_name.isin([x for x in list_users])]
     return {
-            'users': df['screen_name'], 
-            'ids': df['id'],
-            'verified': df["verified"]
-            }
-
-
-def process_data_verified(df: pd.DataFrame, list_users):
-    df = df[df.user_screen_name.isin([x for x in list_users])]
-    return {
-        'df': df
+        'user': df["user_screen_name"]
            }
 
 
@@ -86,7 +78,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_data_get_names, sc))
+                    futures.append(executor.submit(process_data_rt, sc, list_name))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
