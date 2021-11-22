@@ -5,11 +5,12 @@ from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import wait as futures_wait
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 import json
+import urllib.request
 
 
 logger = logging.getLogger("main")
@@ -286,7 +287,7 @@ def url_decompress(url):
         if (url[0] is None) | (url[0] == "None") | (url[0] == '/') | ("http" not in url[0]):
             print("invalid data")
         else:
-            print(url)
+#             print(url)
             url = url[1].split("/")
             return url[0]
 
@@ -420,3 +421,30 @@ def plot_two_hist(s1: pd.Series, s2: pd.Series, name):
     yaxis = dict(autorange="reversed")
     )
     fig.show()
+
+def check_availability(urls):
+    url = []
+    kind = []
+    available = []
+    reason = []
+    for i in tqdm(urls):
+        url.append(i)
+        if "https://youtu.be" in i:
+            kind.append("compressed")
+        else:
+            kind.append("decompressed")
+        try:
+            page = urllib.request.urlopen(i)
+            content = page.read()
+            if "shortDescription" in str(content):
+                available.append(True)
+                reason.append("ok")
+            else:
+                available.append(False)
+                reason.append("This video isn't available anymore")
+        except:
+            available.append(False)
+            r = 'Error 404'
+            reason.append(r)
+    return pd.DataFrame(list(zip(url, kind, available, reason)), 
+                        columns=["url", "type", "available", "reason"])
