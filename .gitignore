@@ -142,3 +142,6 @@ id_finder/data/*
 
 sage/data/*
 sage/.idea
+youtube_checker/.idea
+youtube_checker/data/*
+youtube_checker/venv
