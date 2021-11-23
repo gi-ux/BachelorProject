@@ -139,6 +139,7 @@ json_scored/*
 
 id_finder/auth.json
 id_finder/data/*
+id_finder/.idea
 
 sage/data/*
 sage/.idea

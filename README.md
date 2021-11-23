@@ -23,11 +23,14 @@ To then identify through which means and behaviors the various malicious entitie
 ## Project structure
 
 To have a better management of the project, different folders have been created:
-- notebook folder contains all Notebooks and .py files
-- doc folder contains information regarding the progress and implementation of the project, this folder also houses reports for the project display.
-- csv folder contains miscellaneous .csv files used
+- **csv** folder contains miscellaneous .csv files used
+- **doc** folder contains information regarding the progress and implementation of the project, this folder also houses reports for the project display.
+- **id_finder** folder contains a .py file that is used to get Twitter usernames from accounts id. 
+- **notebook** folder contains all Notebooks and .py files
+- **sage** folder contains the Python implementation of the SAGE project (found in External Tools > SAGE), modified and updated for use in this project.
+- **youtube_checker** folder contains a custom parser user to identify the availability of YouTube urls.
+
 Some folders are kept offline for size and privacy reasons.
-- sage folder contains the Python implementation of the SAGE project (found in External Tools > SAGE), modified and updated for use in this project.
 
 ## Privacy
 
@@ -61,6 +64,14 @@ Sparse Additive Generative Models of Text is a project made by Jacob Eisenstein,
 School of Computer Science, Carnegie Mellon University, in Pittsburgh (USA).
 
 The project, available on the [GitHub repository](https://github.com/jacobeisenstein/SAGE), makes it possible to study the content of tweets, analysing the number of words according to a metric described in the [following paper](http://www.icml-2011.org/papers/534_icmlpaper.pdf).
+
+
+#### Avaxtar
+
+To identify anti-vaccine users inside the project we used and existing repository called [Avaxtar](https://github.com/Matheus-Schmitz/avaxtar).
+
+The project run via Docker and is going to be improved in performance.
+
 
 ## Partial Results
 
