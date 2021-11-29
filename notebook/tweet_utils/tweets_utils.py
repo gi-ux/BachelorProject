@@ -44,6 +44,13 @@ def process_data_rt(df: pd.DataFrame, list_users):
         'user': df["user_screen_name"]
            }
 
+def process_omran_df(df: pd.DataFrame, list_users):
+    df = df[
+        df["user_screen_name"].isin(list_users) | 
+        df["rt_user_screen_name"].isin(list_users) | 
+        df["in_reply_to_screen_name"].isin(list_users)
+    ]
+    return {"df":df}
 
 def process_data_verified_profiles(df: pd.DataFrame):
     return {'df': df}
@@ -79,11 +86,13 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_data_rt, sc, list_name))
+#                     futures.append(executor.submit(process_omran_df, sc, list_name))
+                    futures.append(executor.submit(process_data_get_names, sc))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
                     futures.append(executor.submit(process_data_verified_profiles, sc))
+    
 
 
             except Exception as e:
@@ -145,6 +154,23 @@ def hashtag_process(df):
                 hashtag.append(x_replace)
                 index = index + 4
     return hashtag
+
+def hashtag_date(df):
+    hashtag = []
+    date = []
+    for index, row in df.iterrows():
+        x = row["hashtags"].split(" ")
+        length = (len(x)) // 5
+        index = 0
+        for j in range(length):
+            date.append(row["created_at"])
+            index = index + 1
+            val = x[index].replace("'", "")
+            x_replace = val.replace(",", "")
+            hashtag.append(x_replace)
+            index = index + 4
+    df = pd.DataFrame(list(zip(hashtag, date)), columns=["hashtag", "date"])
+    return df
 
 
 def hashtag_process_list(list_hashtag):
@@ -421,30 +447,3 @@ def plot_two_hist(s1: pd.Series, s2: pd.Series, name):
     yaxis = dict(autorange="reversed")
     )
     fig.show()
-
-def check_availability(urls):
-    url = []
-    kind = []
-    available = []
-    reason = []
-    for i in tqdm(urls):
-        url.append(i)
-        if "https://youtu.be" in i:
-            kind.append("compressed")
-        else:
-            kind.append("decompressed")
-        try:
-            page = urllib.request.urlopen(i)
-            content = page.read()
-            if "shortDescription" in str(content):
-                available.append(True)
-                reason.append("ok")
-            else:
-                available.append(False)
-                reason.append("This video isn't available anymore")
-        except:
-            available.append(False)
-            r = 'Error 404'
-            reason.append(r)
-    return pd.DataFrame(list(zip(url, kind, available, reason)), 
-                        columns=["url", "type", "available", "reason"])
