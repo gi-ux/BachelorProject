@@ -158,7 +158,7 @@ def hashtag_process(df):
 def hashtag_date(df):
     hashtag = []
     date = []
-    for index, row in df.iterrows():
+    for index, row in tqdm(df.iterrows()):
         x = row["hashtags"].split(" ")
         length = (len(x)) // 5
         index = 0
