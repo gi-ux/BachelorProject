@@ -447,3 +447,10 @@ def plot_two_hist(s1: pd.Series, s2: pd.Series, name):
     yaxis = dict(autorange="reversed")
     )
     fig.show()
+
+def nt_found(nt, num):
+    lst = []
+    for i in nt:
+        if nt.get(i) == num:
+            lst.append(i)
+    return lst
