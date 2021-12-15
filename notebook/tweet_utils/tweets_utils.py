@@ -86,8 +86,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-#                     futures.append(executor.submit(process_omran_df, sc, list_name))
-                    futures.append(executor.submit(process_data_get_names, sc))
+                    futures.append(executor.submit(process_omran_df, sc, list_name))
+#                     futures.append(executor.submit(process_data_get_names, sc))
 
                 else:
 #                     futures.append(executor.submit(process_data_users, sc))
@@ -454,3 +454,28 @@ def nt_found(nt, num):
         if nt.get(i) == num:
             lst.append(i)
     return lst
+
+def merge_df_comm(num, df):
+    lst = []
+    for i in tqdm(leiden):
+        if leiden.get(i) == 12:
+            lst.append(i)
+    rt2 = pd.read_csv("C:/Users/gianl/Desktop/Gi/Supsi/BachelorProject/network/names/user_rtuser.csv",
+                    lineterminator="\n", low_memory=False)
+    df = pd.DataFrame(lst, columns=["name_0"])
+    merge_name = rt2.merge(df, left_on="name", right_on="name_0", how="left")
+    df = pd.DataFrame(lst, columns=["rt_name_0"])
+    merge_name = merge_name.merge(df, left_on="rt_name", right_on="rt_name_0", how="left")
+    subcomm = merge_name[merge_name["name_0"].notna() & merge_name["rt_name_0"].notna()][["name_0", "rt_name_0"]]
+    subcomm = subcomm.reset_index(drop=True)
+    subcomm.rename(columns={'name_0': 'name', 'rt_name_0': 'rt_name'}, inplace=True)
+    return subcomm
+
+def read_from_json(path):
+    start_time = time.perf_counter()
+    file = open (path,)
+    obj = json.loads(file.read())
+    file.close()
+    stop_time = time.perf_counter()
+    print("Time: ",stop_time-start_time)
+    return obj
