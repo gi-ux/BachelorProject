@@ -36,6 +36,12 @@ def process_data_tweets(df: pd.DataFrame):
         "text":df["text"]
     }
 
+def process_tot_users(df: pd.DataFrame):
+    names = list(df["user_screen_name"].unique())
+    return {
+        "names":names
+    }
+
 
 def process_data_rt(df: pd.DataFrame, list_users):
     df = df[df["rt_created_at"].notna()]
@@ -86,7 +92,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_omran_df, sc, list_name))
+                    futures.append(executor.submit(process_tot_users, sc))
+#                     futures.append(executor.submit(process_omran_df, sc, list_name))
 #                     futures.append(executor.submit(process_data_get_names, sc))
 
                 else:
@@ -470,12 +477,3 @@ def merge_df_comm(num, df):
     subcomm = subcomm.reset_index(drop=True)
     subcomm.rename(columns={'name_0': 'name', 'rt_name_0': 'rt_name'}, inplace=True)
     return subcomm
-
-def read_from_json(path):
-    start_time = time.perf_counter()
-    file = open (path,)
-    obj = json.loads(file.read())
-    file.close()
-    stop_time = time.perf_counter()
-    print("Time: ",stop_time-start_time)
-    return obj
