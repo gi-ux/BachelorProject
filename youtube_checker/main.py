@@ -30,6 +30,7 @@ def main():
     # "https://www.youtube.com/playlist?list=PLiC5xPi..."]
     kind, available, reason, title, description = ([] for _ in range(5))
     names = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["NAME"])
+    values = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["VAL"])
     print(f"Starting parse on {len(urls)} YouTube Videos... ")
     for i in tqdm(urls):
         if "https://youtu.be" in i:
@@ -68,8 +69,8 @@ def main():
             description.append(np.nan)
             reason.append('Error 404')
 
-    df = pd.DataFrame(list(zip(names, title, description, urls, kind, available, reason)),
-                      columns=["user_name", "title", "description", "url", "type", "available", "reason"])
+    df = pd.DataFrame(list(zip(names, title, description, urls, kind, available, reason, values)),
+                      columns=["user_name", "title", "description", "url", "type", "available", "reason", "occurrency"])
     df.to_csv(args.outfilename, index=False, line_terminator="\n", encoding="utf-8")
     print("Parsing done!")
     # df = pd.DataFrame(list(zip( title, description, urls, kind, available, reason)), columns=["title",

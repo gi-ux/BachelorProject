@@ -60,8 +60,13 @@ def main():
         cols = [args.col_name]
         print("Start processing...")
         print("Reading input file...")
-        df = pd.read_csv(args.input_filename, lineterminator="\n", low_memory=False, usecols=cols)
-        df = df[df[args.col_name].notna()]
+        df = pd.DataFrame()
+        cont = 0
+        for chunk in pd.read_csv(args.input_filename, lineterminator="\n", low_memory=False, usecols=cols, chunksize=1000000):
+            cont += 1
+            print(f"Reading chunk: {cont}")
+            df = df.append(chunk[chunk[args.col_name].notna()])
+            df = df.reset_index(drop=True)
         print("Done!")
         print("Cleaning input file...")
         if not args.hashtags:
