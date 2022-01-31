@@ -318,6 +318,7 @@ def url_decompress(url):
 #         url = check_compression(url, df)
         url = url.split("//")
         if (url[0] is None) | (url[0] == "None") | (url[0] == '/') | ("http" not in url[0]):
+            print(url)
             print("invalid data")
         else:
 #             print(url)
