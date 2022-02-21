@@ -24,11 +24,12 @@ To then identify through which means and behaviors the various malicious entitie
 
 To have a better management of the project, different folders have been created:
 - **csv** folder contains miscellaneous .csv files used
-- **doc** folder contains information regarding the progress and implementation of the project, this folder also houses reports for the project display.
-- **id_finder** folder contains a .py file that is used to get Twitter usernames from accounts id. 
+- **doc** folder contains information regarding the progress and implementation of the project, this folder also houses reports for the project display
+- **id_finder** folder contains some .py file that are used to get Twitter usernames/id from accounts id/username
+- **new_studies** folder contains new studies about new dataset collected
 - **notebook** folder contains all Notebooks and .py files
-- **sage** folder contains the Python implementation of the SAGE project (found in External Tools > SAGE), modified and updated for use in this project.
-- **youtube_checker** folder contains a custom parser user to identify the availability of YouTube urls.
+- **sage** folder contains the Python implementation of the SAGE project (found in External Tools > SAGE), modified and updated for use in this project
+- **youtube_checker** folder contains a custom parser user to identify the availability of YouTube urls
 
 Some folders are kept offline for size and privacy reasons.
 
@@ -38,7 +39,7 @@ Since the data in question is public information on an open platform that can be
 
 ## Data Collection
 
-Data are collected through an [existing repository](https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done.
+Data are collected through an [existing repository](https://github.com/echen102/COVID-19-TweetIDs) on which a hydration process has been done and via [Twitter API](https://developer.twitter.com/en/docs).
 
 ## External Tools
 
