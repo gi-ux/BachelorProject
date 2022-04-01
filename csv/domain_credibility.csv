@@ -1,6 +1,5 @@
 Domain,Class
 100percentfedup.com,low
-100percentfedup.com,high
 10news.one,low
 12minutos.com,low
 12news.com,high
@@ -22,7 +21,7 @@ abc.net.au,high
 abc7ny.com,high
 abcbusinessnews.com,low
 abcnews.com.co,low
-abcnews.go.com,high
+abcnews.go.com,low
 abovetopsecret.com,low
 abruzzoweb.it,low
 abs-cbn.com,high
@@ -58,7 +57,6 @@ ajph.aphapublications.org,high
 ajuanews.com,low
 albawaba.com,low
 allenbwest.com,low
-allenbwest.com,high
 allenwestrepublic.com,low
 allianceforadvancedhealth.com,low
 allianceforscience.cornell.edu,high
@@ -90,7 +88,6 @@ americansarepissed.com,low
 americanscientist.org,high
 americansfortruth.com,low
 americanthinker.com,low
-americanthinker.com,high
 americantoday.news,low
 americantruthtoday.com,low
 americasfreedomfighters.com,low
@@ -176,7 +173,6 @@ breakingnewshouse.com,low
 breakingwide.com,low
 breaknotizie.com,low
 breitbart.com,low
-breitbart.com,high
 bridgemi.com,high
 bridgeporttimes.com,low
 britainfirst.org,low
@@ -248,7 +244,7 @@ conservativematrix.com,low
 conservativemedia.com,low
 conservativeoutfitters.com,low
 conservativepost.com,low
-conservativereview.com,high
+conservativereview.com,low
 conservativetoday.org,low
 conservativetribune.com,low
 constitutionstatenews.com,low
@@ -272,14 +268,13 @@ dailyheadlines.net,low
 dailykos.com,high
 dailymail.co.uk,high
 dailynewsbin.com,low
-dailynewsbin.com,high
 dailypoliticalnewswire.com,low
 dailyrecord.com,high
 daily-screen.com,low
 dailystar.co.uk,low
 dailystormer.com,low
 dailystormer.name,low
-dailywire.com,high
+dailywire.com,low
 dcalert.com,low
 dcbluedot.com,low
 dcclothesline.com,low
@@ -336,7 +331,6 @@ empiresports.co,low
 en.bbarta24.net,low
 en.mediamass.net,low
 endingthefed.com,low
-endingthefed.com,high
 endthefed.org,low
 endtimeheadlines.org,low
 enduringvision.com,low
@@ -409,15 +403,13 @@ ibtimes.com,high
 ieee.org,high
 ifyouonlynews.com,low
 ijr.com,high
-ilfattoquotidaino.it,low
 ilfattoquotidiano.it,high
 ilfoglio.it,high
 ilgazzettino.it,high
-il-giornale.info,low
+il-giornale.info,high
 ilgiornale.it,high
 ilmattino.it,high
 ilmessaggero.it,high
-ilmessangero.it,low
 ilovemyfreedom.org,high
 ilpost.it,high
 ilprimatonazionale.it,low
@@ -452,7 +444,6 @@ journals.sagepub.com,high
 jp.reuters.com,high
 jstor.org,high
 judicialwatch.org,low
-judicialwatch.org,high
 la7.it,high
 lanuovabq.it,low
 laseroffice.it,low
@@ -560,7 +551,6 @@ nytimes.com,high
 observatorial.com,low
 observer.com,high
 occupydemocrats.com,low
-occupydemocrats.com,high
 oceana.org,high
 oggiscienza.it,high
 olivieromannucci.blogspot.com,low
@@ -584,7 +574,6 @@ politicalears.com,low
 politico.com,high
 politicops.com,low
 politicususa.com,low
-politicususa.com,high
 politifact.com,high
 popsci.com,high
 popularmechanics.com,high
@@ -616,7 +605,6 @@ realmofhistory.com,high
 realnewsrightnow.com,low
 redflagnews.com,low
 redstate.com,low
-redstate.com,high
 religiousmind.com,low
 renovatio21.com,low
 repubblica.it,high
@@ -673,7 +661,7 @@ skeptics.com.au,high
 skeptoid.com,high
 skyandtelescope.org,high
 skynew.it,low
-skytg24news.it,low
+skytg24news.it,high
 slate.com,high
 smithsonianmag.com,high
 societyforscience.org,high
@@ -701,7 +689,6 @@ tgcom24.mediaset.it,high
 theamericanmirror.com,high
 theatlantic.com,high
 theblaze.com,low
-theblaze.com,high
 thebostontribune.com,low
 theconservativetreehouse.com,high
 thedailybeast.com,high
@@ -758,7 +745,6 @@ usapoliticsnow.com,low
 usasupreme.com,low
 usatoday.com,high
 usuncut.com,low
-usuncut.com,high
 va.newsrepublic.net,low
 vaxopedia.org,high
 verascienza.com,high

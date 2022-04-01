@@ -6,11 +6,11 @@ from nltk.corpus import stopwords
 import argparse
 
 path_names = glob.glob("C:/Users/gianl/Desktop/Gi/Supsi/BachelorProject/csv/")[0]
-cachedStopWords = stopwords.words("english")
-custom_words = list(pd.read_csv(path_names + "words_to_remove.csv",
+cachedStopWords = stopwords.words("italian")
+custom_words = list(pd.read_csv(path_names + "custom_toremove_words.csv",
                                 lineterminator="\n", low_memory=False)["word"])
 
-
+print(custom_words)
 def clean_cached(text):
     text = ' '.join([word for word in text.split() if word not in cachedStopWords])
     text = ' '.join([word for word in text.split() if word not in custom_words])

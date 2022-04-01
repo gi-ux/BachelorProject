@@ -11,24 +11,27 @@ import plotly.express as px
 import plotly.graph_objects as go
 import json
 import urllib.request
-
+import csv
 
 logger = logging.getLogger("main")
 workers = 7
-chunksize = int(1e6)
+chunksize = 500000
 
     ########################### process data tweets ###########################
-def process_quotes(df: pd.DataFrame):
-#     original = df[df['rt_created_at'].isna() & df['in_reply_to_status_id'].isna() & df['quoted_status_created_at'].isna()]
-#     quotes = df[df['quoted_status_created_at'].isna()]
-    retweet = df[df['rt_created_at'].notna()]
-    retweet_checksum = len(retweet[retweet["quoted_status_created_at"].notna()])
-#     reply = df[df['in_reply_to_status_id'].notna()]
+def process_split(df: pd.DataFrame):
+    original = df[df["in_reply_to_screen_name"].isna() & df["rt_created_at"].isna() & df["quoted_status_id"].isna()]
+    reply = df[df["in_reply_to_user_id"].notna() & df["quoted_status_id"].isna()]
+    retweet = df[df["rt_created_at"].notna()]
+    quote = df[df["quoted_status_id"].notna() & df["rt_created_at"].isna()]
     return {
-            "rt_len" : len(retweet),
-            "quotes_rt_len" : retweet_checksum
+        "original":len(original),
+        "reply":len(reply),
+        "retweet":len(retweet),
+        "quote":len(quote)
     }
     
+def process_data_light(df: pd.DataFrame):
+    return df
     
 def process_data_tweets(df: pd.DataFrame):
     df = df[df["text"].notna()]
@@ -72,6 +75,9 @@ def process_data_hashtags(df: pd.DataFrame):
 def process_data_get_names(df: pd.DataFrame):
     return {"df": df}
 
+def process_data_count(df: pd.DataFrame):
+    return {"len":len(df)}
+
 
 def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, workers=workers):
     c = 1
@@ -79,7 +85,8 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
     futures = []
     partial_results = []
     results = []
-    chunks = pd.read_csv(filename, lineterminator='\n', chunksize=chunksize, usecols=cols, low_memory=False)
+    chunks = pd.read_csv(filename, lineterminator='\n', chunksize=chunksize, encoding="utf-8",
+                         quoting=csv.QUOTE_NONE, usecols=cols, low_memory=False)
     chunk = None
     try:
         chunk = next(chunks)
@@ -92,16 +99,11 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
         for sc in subchunks:
             try:
                 if (flag == True):
-                    futures.append(executor.submit(process_tot_users, sc))
-#                     futures.append(executor.submit(process_omran_df, sc, list_name))
-#                     futures.append(executor.submit(process_data_get_names, sc))
+#                     futures.append(executor.submit(process_split, sc))
+                    futures.append(executor.submit(process_data_light, sc))
 
                 else:
-#                     futures.append(executor.submit(process_data_users, sc))
                     futures.append(executor.submit(process_data_verified_profiles, sc))
-    
-
-
             except Exception as e:
                 logger.exception("Error", e)
             i += 1
@@ -115,7 +117,7 @@ def process_all_data(filename, cols, flag, list_name=None, chunksize=chunksize, 
             partial_results = [fut.result() for fut in futures]
         except Exception as e:
             logger.exception("Error", e)
-    results.append(partial_results)
+    results.extend(partial_results)
     return results
 
  ############################## Utils ##############################  
