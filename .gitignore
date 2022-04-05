@@ -140,7 +140,6 @@ json_scored/*
 id_finder/auth.json
 id_finder/data/*
 id_finder/.idea
-id_finder/username_to_id
 id_finder/id_to_username
 
 sage/data/*
