@@ -5,6 +5,18 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import argparse
 
+def clean_url(df):
+    yt_df = df[(df["urls"].str.contains("https://youtu.be")) | (df["urls"].str.contains("https://youtube"))]
+    value = []
+    for i in tqdm(yt_df["urls"]):
+        url_exp = i.split(" ")
+        lst_inside = []
+        for exp in range(len(url_exp)):
+            if url_exp[exp] == "'expanded_url':":
+                lst_inside.append(url_exp[exp + 1][1:-2])
+        value.append(lst_inside)
+    yt_df["domains"] = value
+    return yt_df
 
 def get_title(soup):
     metas = (soup.findAll("meta"))
@@ -26,8 +38,6 @@ def main():
                         help="This is the name of .csv file, if not specified is 'output'.")
     args = parser.parse_args()
     urls = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["URL"])
-    # urls = ["https://www.youtube.com/watch?v=09maaUaRT4M", "https://www.youtube.com/WHO",
-    # "https://www.youtube.com/playlist?list=PLiC5xPi..."]
     kind, available, reason, title, description = ([] for _ in range(5))
     # names = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["NAME"])
     values = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["VAL"])

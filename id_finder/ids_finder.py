@@ -2,6 +2,7 @@ import tweepy
 import pandas as pd
 import json
 from tqdm import tqdm
+import argparse
 
 jsonFile = open('auth.json', 'r')
 config = json.load(jsonFile)
@@ -16,8 +17,13 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-data = pd.read_csv("./username_to_id/try.csv")
-list_name = list(data["user_screen_name"])
+parser = argparse.ArgumentParser(description='run ids_finder ONE file.csv containing user_screen_name of Twitter users '
+                                             'to obtain their Twitter Ids or status (suspended / removed / not existing'
+                                             'anymore)')
+parser.add_argument('inputfile', type=str, default="username_to_id/users.csv",
+                    help="This should be the input file which contains user_screen_name of users.")
+args = parser.parse_args()
+list_name = list(pd.read_csv(args.inputfile, lineterminator="\n", low_memory=False)["user_screen_name"])
 
 ids = []
 cont = 0
