@@ -7,16 +7,15 @@ import argparse
 
 def clean_url(df):
     yt_df = df[(df["urls"].str.contains("https://youtu.be")) | (df["urls"].str.contains("https://youtube"))]
-    value = []
-    for i in tqdm(yt_df["urls"]):
-        url_exp = i.split(" ")
-        lst_inside = []
+    screen_name = []
+    lst_urls = []
+    for row in tqdm(yt_df.itertuples()):
+        url_exp = row.urls.split(" ")
         for exp in range(len(url_exp)):
             if url_exp[exp] == "'expanded_url':":
-                lst_inside.append(url_exp[exp + 1][1:-2])
-        value.append(lst_inside)
-    yt_df["domains"] = value
-    return yt_df
+                lst_urls.append(url_exp[exp + 1][1:-2])
+                screen_name.append(row.user_screen_name)
+    return pd.DataFrame(list(zip(screen_name, lst_urls)), columns=["user_screen_name", "link"])
 
 def get_title(soup):
     metas = (soup.findAll("meta"))
@@ -32,15 +31,18 @@ def get_description(content):
 def main():
     parser = argparse.ArgumentParser(description='run YouTube checker on ONE file.csv to obtain information on YouTube '
                                                  'Video (such as status, title and description)')
+
     parser.add_argument('file', type=str,
-                        help="This should be the input file with one column named 'URL' and 'NAME.")
+                        help="This should be the input file with one column named 'user_screen_name' and 'urls.")
+
     parser.add_argument('--outfilename', type=str, default="data/output.csv",
                         help="This is the name of .csv file, if not specified is 'output'.")
     args = parser.parse_args()
-    urls = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["URL"])
+    df_parsed = clean_url(pd.read_csv(args.file, lineterminator="\n", low_memory=False, encoding="utf-8"))
+    urls = list(df_parsed["link"])
+    name = list(df_parsed["user_screen_name"])
     kind, available, reason, title, description = ([] for _ in range(5))
-    # names = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["NAME"])
-    values = list(pd.read_csv(args.file, lineterminator="\n", low_memory=False)["VAL"])
+
     print(f"Starting parse on {len(urls)} YouTube Videos... ")
     for i in tqdm(urls):
         if "https://youtu.be" in i:
@@ -79,13 +81,10 @@ def main():
             description.append(np.nan)
             reason.append('Error 404')
 
-    df = pd.DataFrame(list(zip(title, description, urls, kind, available, reason, values)),
-                      columns=["title", "description", "url", "type", "available", "reason", "occurrency"])
+    df = pd.DataFrame(list(zip(name, title, description, urls, kind, available, reason)),
+                      columns=["screen_name", "title", "description", "url", "type", "available", "reason"])
     df.to_csv(args.outfilename, index=False, line_terminator="\n", encoding="utf-8")
     print("Parsing done!")
-    # df = pd.DataFrame(list(zip( title, description, urls, kind, available, reason)), columns=["title",
-    # "description", "url", "type", "available", "reason"]) with pd.option_context('display.max_rows', None,
-    # 'display.max_columns', None):  # more options can be specified also print(df)
 
 
 if __name__ == '__main__':
