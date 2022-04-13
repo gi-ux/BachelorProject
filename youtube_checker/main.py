@@ -3,7 +3,10 @@ import numpy as np
 from tqdm import tqdm
 import pandas as pd
 from bs4 import BeautifulSoup
+from concurrent.futures import wait as futures_wait
+from concurrent.futures.process import ProcessPoolExecutor
 import argparse
+import glob
 
 def clean_url(df):
     yt_df = df[(df["urls"].str.contains("https://youtu.be")) | (df["urls"].str.contains("https://youtube"))]
@@ -27,8 +30,7 @@ def get_description(content):
     string = string.split('shortDescription')[1]
     return string[3:-3]
 
-
-def main():
+def get_from_args():
     parser = argparse.ArgumentParser(description='run YouTube checker on ONE file.csv to obtain information on YouTube '
                                                  'Video (such as status, title and description)')
 
@@ -39,11 +41,30 @@ def main():
                         help="This is the name of .csv file, if not specified is 'output'.")
     args = parser.parse_args()
     df_parsed = clean_url(pd.read_csv(args.file, lineterminator="\n", low_memory=False, encoding="utf-8"))
-    urls = list(df_parsed["link"])
-    name = list(df_parsed["user_screen_name"])
-    kind, available, reason, title, description = ([] for _ in range(5))
+    return df_parsed
 
-    print(f"Starting parse on {len(urls)} YouTube Videos... ")
+def parse_yt_parallel(urls: list):
+    # results = pd.DataFrame()
+    futures = []
+    executor = ProcessPoolExecutor(max_workers=8)
+    sublist = np.array_split(urls, 8)
+    count = 0
+    for sc in sublist:
+        futures.append(executor.submit(scrape, sc, count))
+        count = count + 1
+    futures_wait(futures)
+    # for fut in futures:
+    #     results = results.append(fut.result())
+    # results.reset_index(drop=True, inplace=True)
+    # return results
+
+# def scrape(urls: list, count: int):
+#     print(f"Worker {count} parsing on {len(urls)} YouTube Videos... ")
+#     return pd.DataFrame(list(urls), columns=["Len"])
+
+def scrape(urls: list, count: int):
+    kind, available, reason, title, description = ([] for _ in range(5))
+    print(f"Worker {count} parsing on {len(urls)} YouTube Videos... ")
     for i in tqdm(urls):
         if "https://youtu.be" in i:
             kind.append("compressed")
@@ -80,12 +101,23 @@ def main():
             title.append(np.nan)
             description.append(np.nan)
             reason.append('Error 404')
+    df = pd.DataFrame(list(zip(title, description, urls, kind, available, reason)),
+                      columns=["title", "description", "url", "type", "available", "reason"])
+    print(f"Worker {count} finished!")
+    df.to_csv(f"./data/worker{count}.csv", line_terminator="\n", encoding="utf-8", index=False)
+    print(f"Worker {count} wrote file!")
 
-    df = pd.DataFrame(list(zip(name, title, description, urls, kind, available, reason)),
-                      columns=["screen_name", "title", "description", "url", "type", "available", "reason"])
-    df.to_csv(args.outfilename, index=False, line_terminator="\n", encoding="utf-8")
-    print("Parsing done!")
+
+def main():
+    urls = pd.read_csv("./data/youtube_russiaukraine.csv", lineterminator="\n", encoding="utf-8", low_memory=False)["URL"]
+    parse_yt_parallel(urls)
+    print("Completed parsing")
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    path_data = glob.glob("./data/worker*.csv")
+    df = pd.DataFrame()
+    for path in path_data:
+        df = df.append(pd.read_csv(path))
+    df.to_csv("./data/url_parsed.csv", encoding="utf-8", index=False, line_terminator="\n")
